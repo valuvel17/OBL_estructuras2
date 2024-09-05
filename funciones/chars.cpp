@@ -1,3 +1,5 @@
+#include "chars.h"
+
 char** separarChars(char* cadena) {
     int cantidad_palabras = 1;
     int largo = 0;

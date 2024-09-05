@@ -3,7 +3,7 @@
 #include <iostream>
 #include <limits>
 #include "clases/Libreria.cpp"
-#include "funciones/chars.cpp"
+#include "funciones/chars.h"
 
 using namespace std;
 

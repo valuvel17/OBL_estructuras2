@@ -1,5 +1,5 @@
 #include <iostream>
-#include "funciones/enteros.cpp"
+#include "funciones/enteros.h"
 using namespace std;
 
 class Libreria{
