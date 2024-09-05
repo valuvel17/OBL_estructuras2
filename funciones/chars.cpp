@@ -1,5 +1,20 @@
 #include "chars.h"
 
+int charAint(char* cadena){
+    int ret = 0;
+    int largo = 0;
+    while(cadena[largo] != '\0'){
+        largo++;
+    }
+    int i = 0;
+    while(largo!=0){
+        ret += (cadena[i] - '0')*(10^largo);
+        i++;
+        largo--;
+    }
+    return  ret;  
+}
+
 char** separarChars(char* cadena) {
     int cantidad_palabras = 1;
     int largo = 0;

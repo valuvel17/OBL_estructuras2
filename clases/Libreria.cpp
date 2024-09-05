@@ -1,5 +1,5 @@
 #include <iostream>
-#include "funciones/enteros.h"
+#include "..\funciones\enteros.h"
 using namespace std;
 
 class Libreria{
@@ -121,16 +121,16 @@ class Libreria{
     
     //PRE: Recibe un nodo libroAVL y un id 
     //POS: Devuelve el título del libro si existe y está habilitado si no devuelve libro_no_encontrado
-    char* findAux(libroAVL* nodo, int id){
-        if(!nodo) return "libro_no_encontrado";
-
+    const char* findAux(libroAVL* nodo, int id){
+        const char* ret = "libro_no_encontrado";
+        if(!nodo) return ret;
+        
         if(nodo->id > id) return findAux(nodo->izq,id);
 
         if(nodo->id < id) return findAux(nodo->der,id);  
         
         if(nodo->estado) return nodo->titulo;
-        
-        else return "libro_no_encontrado";
+        else return ret;
     }
     
     //PRE: Recibe un nodo libroAVL y un  id 
@@ -163,7 +163,7 @@ class Libreria{
     
     //PRE: Recibe una id
     //POS: Devuelve el título del libro si existe en la libreria
-    char* find(int id){
+    const char* find(int id){
         return findAux(raiz,id);
 
     }
