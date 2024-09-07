@@ -2,8 +2,8 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "clases\Libreria.cpp"
-#include "funciones\chars.h"
+#include "clases/Libreria.cpp"
+#include "funciones/enteros.cpp"
 
 using namespace std;
 
@@ -11,27 +11,40 @@ int main(){
     Libreria* nueva = new Libreria;
     int cantidad_operaciones = 0;
     cin >> cantidad_operaciones;
+    
     for(int i=0; i<cantidad_operaciones; i++){
-        char* aux = new char;
+        char* aux = new char[7];
         cin >> aux;
-        char** auxChar= separarChars(aux);
         char letra = aux[0];
         switch (letra){
-            case 'A':
-                nueva->add(charAint(auxChar[1]), auxChar[2]);
-            break;
+            case 'A':{
+                int id = 0;
+                string titulo = "";
+                cin >> id;
+                cin >> titulo;
+                nueva->add(id,titulo);
+            } break;
             
-            case 'F':
-                cout << nueva->find(charAint(auxChar[1])) << endl;
-            break;
+            case 'F': {
+                int id = 0;
+                cin >> id;
+                string titulo = nueva->find(id);
+                cout << titulo << endl;
+            } break;
 
-            case 'T':
-                if (!nueva->toggle(charAint(auxChar[1]))) cout << "libro_no_encontrado" << endl;
-            break;
+            case 'T':{
+                int id = 0;
+                cin >> id;
+                if (!(nueva->toggle(id))) cout << "libro_no_encontrado" << endl;
+            } break;
 
-            case 'C':
-                cout << nueva->cantidadTotal() << " " << nueva->cantidadHabilitados() << " " << nueva->cantidadDeshabilitados() << endl;
-            break;
+            case 'C':{
+                int total = nueva->cantidadTotal();
+                int hab = nueva->cantidadHabilitados();
+                int noHab = nueva->cantidadDeshabilitados();
+                cout << total << " " << hab << " " << noHab << endl;
+            } break;
+            
             default:
                 cout << "comando incompatible" << endl;
             break;

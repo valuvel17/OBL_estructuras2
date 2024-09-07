@@ -1,5 +1,6 @@
 #include <iostream>
-#include "..\funciones\enteros.h"
+#include <string>
+#include "../funciones/enteros.h"
 using namespace std;
 
 class Libreria{
@@ -7,7 +8,7 @@ class Libreria{
     //Estructuras privadas
     struct libroAVL{
             int id;
-            char* titulo;
+            string titulo;
             bool estado;
             int altura;
             libroAVL *izq, *der;
@@ -63,7 +64,7 @@ class Libreria{
 
     //PRE: Recibe un nodo libroAVL, la id y el titulo
     //POS: Devuelve el nodo raiz
-    libroAVL* addAux(libroAVL* nodo,int id, char* titulo){
+    libroAVL* addAux(libroAVL* nodo,int id, string titulo){
         //Paso 1 : Insertar
         if(!nodo) {
                 libroAVL* nuevo = new libroAVL;
@@ -121,16 +122,15 @@ class Libreria{
     
     //PRE: Recibe un nodo libroAVL y un id 
     //POS: Devuelve el título del libro si existe y está habilitado si no devuelve libro_no_encontrado
-    const char* findAux(libroAVL* nodo, int id){
-        const char* ret = "libro_no_encontrado";
-        if(!nodo) return ret;
+    string findAux(libroAVL* nodo, int id){
+        if(!nodo) return "libro_no_encontrado";
         
         if(nodo->id > id) return findAux(nodo->izq,id);
 
         if(nodo->id < id) return findAux(nodo->der,id);  
         
-        if(nodo->estado) return nodo->titulo;
-        else return ret;
+        if(nodo->estado) return nodo->titulo + " H";
+        else return nodo->titulo + " D";
     }
     
     //PRE: Recibe un nodo libroAVL y un  id 
@@ -157,13 +157,13 @@ class Libreria{
 
     //PRE: Recibe un id y un titulo
     //POS: Agrega el libro a libreria
-    void add(int id, char* titulo){
-        raiz = addAux(raiz,id,titulo);
+    void add(int id, string titulo){
+        this->raiz = addAux(raiz,id,titulo);
     }
     
     //PRE: Recibe una id
     //POS: Devuelve el título del libro si existe en la libreria
-    const char* find(int id){
+    string find(int id){
         return findAux(raiz,id);
 
     }
@@ -177,18 +177,18 @@ class Libreria{
     //PRE: - 
     //POS: Devuelve la cantidad de libros en la libreria
     int cantidadTotal(){
-        return libreria->cantidad_total;
+        return this->cantidad_total;
     }
 
     //PRE: -
     //POS: Devuelve la cantidad de libros habilitados en la libreria
     int cantidadHabilitados(){
-        return libreria->cantidad_disponible;
+        return this->cantidad_disponible;
     }
     
     //PRE: -
     //POS: Devuelve la cantidad de libros deshabilitados en la libreria
     int cantidadDeshabilitados(){
-        return libreria->cantidad_total - libreria->cantidad_disponible;
+        return this->cantidad_total - this->cantidad_disponible;
     }
 };
