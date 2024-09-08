@@ -82,7 +82,10 @@ class Libreria{
         if(id < nodo->id) nodo->izq = addAux(nodo->izq, id, titulo);
         if(id == nodo->id){
             nodo->titulo = titulo;
-            nodo->estado = true;
+            if(!(nodo->estado)){
+                nodo->estado = true;
+                cantidad_disponible++;
+            }
         }
         
         //Todo lo que pasa a partir de ahora solo se ejecuta en el caso A y B (a la vuelta de la recursion)
@@ -158,20 +161,20 @@ class Libreria{
     //PRE: Recibe un id y un titulo
     //POS: Agrega el libro a libreria
     void add(int id, string titulo){
-        this->raiz = addAux(raiz,id,titulo);
+        this->raiz = addAux(this->raiz,id,titulo);
     }
     
     //PRE: Recibe una id
     //POS: Devuelve el título del libro si existe en la libreria
     string find(int id){
-        return findAux(raiz,id);
+        return findAux(this->raiz,id);
 
     }
 
     //PRE: Recibe la id
     //POS: Devuelve true si esta y false si no.
     bool toggle(int id){
-        return toggleAux(raiz, id);
+        return toggleAux(this->raiz, id);
     }
     
     //PRE: - 
