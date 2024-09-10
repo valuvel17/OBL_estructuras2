@@ -55,8 +55,8 @@ class Libreria{
     libroAVL* rotacionDerecha(libroAVL* B){
         libroAVL* A = B->izq;
         libroAVL* T2 =A->der;
-        A->der = B;
         B->izq = T2;
+        A->der = B;
         B->altura = alturaAux(B);//es importante
         A->altura = alturaAux(A);//este Orden
         return A;
@@ -67,25 +67,26 @@ class Libreria{
     libroAVL* addAux(libroAVL* nodo,int id, string titulo){
         //Paso 1 : Insertar
         if(!nodo) {
-                libroAVL* nuevo = new libroAVL;
-                nuevo->id = id;
-                nuevo->titulo = titulo;
-                nuevo->estado = true;
-                nuevo->altura = 1;
-                nuevo->der = nuevo->izq = NULL;
-                cantidad_disponible ++;
-                cantidad_total ++;
-                return nuevo;
+            libroAVL* nuevo = new libroAVL;
+            nuevo->id = id;
+            nuevo->titulo = titulo;
+            nuevo->estado = true;
+            nuevo->altura = 1;
+            nuevo->der = nuevo->izq = NULL;
+            cantidad_disponible ++;
+            cantidad_total ++;
+            return nuevo;
         }
         
         if(id > nodo->id) nodo->der = addAux(nodo->der, id, titulo);
         if(id < nodo->id) nodo->izq = addAux(nodo->izq, id, titulo);
-        if(id == nodo->id){
+        if(nodo->id == id){
             nodo->titulo = titulo;
             if(!(nodo->estado)){
                 nodo->estado = true;
                 cantidad_disponible++;
             }
+            return nodo;
         }
         
         //Todo lo que pasa a partir de ahora solo se ejecuta en el caso A y B (a la vuelta de la recursion)
