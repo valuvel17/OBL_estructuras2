@@ -49,6 +49,7 @@ int main(){
                 cout << "comando incompatible" << endl;
             break;
         }
+        delete[] aux;
     }
     nueva->destruir();
     return 0;
