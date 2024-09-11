@@ -156,6 +156,15 @@ class Libreria{
         return true;     
     }
     
+    void destruirAVL(libroAVL* nodo){
+        if(!nodo) return;
+        if(nodo->izq) destruirAVL(nodo->izq);
+        if(nodo->der) destruirAVL(nodo->der);
+        libroAVL* aBorrar = nodo;
+        delete aBorrar;
+        aBorrar = NULL;
+    }
+
     public:
     //Funciones publicas
 
@@ -194,5 +203,10 @@ class Libreria{
     //POS: Devuelve la cantidad de libros deshabilitados en la libreria
     int cantidadDeshabilitados(){
         return this->cantidad_total - this->cantidad_disponible;
+    }
+
+    void destruir(){
+        destruirAVL(this->raiz);
+        delete this;
     }
 };

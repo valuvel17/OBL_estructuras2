@@ -50,5 +50,6 @@ int main(){
             break;
         }
     }
+    nueva->destruir();
     return 0;
 }
