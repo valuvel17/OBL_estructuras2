@@ -64,7 +64,7 @@ class Libreria2{
         libro* old_tabla = tabla;  // Save old tabla
         bool* old_eliminado = eliminado;  // Save old eliminado
         
-        size = sigPrimo(size);  // Update size to next prime
+        size = sigPrimo(size + 1);  // Update size to next prime
         tabla = new libro[size];
         eliminado = new bool[size]();
         
@@ -75,8 +75,8 @@ class Libreria2{
         
         for (int i = 0; i < old_size; i++) {
             if (old_tabla[i].ocupado) {
-                int pos = dobleHash(old_tabla[i].id, 0);
-                int intento = 0;
+                int pos = dobleHash(old_tabla[i].id, 1);
+                int intento = 1;
                 while (tabla[pos].ocupado) {
                     pos = dobleHash(old_tabla[i].id, intento);
                     intento++;
@@ -91,14 +91,16 @@ class Libreria2{
     }
     
     void agregarAHash(int id, string titulo){
-        int pos = dobleHash(id,0);
-        int i=0;
-        while(tabla[pos].ocupado){
-            pos = dobleHash(id, ++i);
+        int pos = dobleHash(id,1);
+        int i=1;
+        while(this->tabla[pos].ocupado){
+            pos = dobleHash(id,i+1);
+            i++;
         }
-        tabla[pos].id = id;
-        tabla[pos].titulo = titulo;
-        tabla[pos].estado = tabla[pos].ocupado = true;
+        this->tabla[pos].id = id;
+        this->tabla[pos].titulo = titulo;
+        this->tabla[pos].estado = this->tabla[pos].ocupado = true;
+        size++;
         cantidad_total++;
         cantidad_disponible++;
     }
@@ -111,53 +113,57 @@ class Libreria2{
     }  
     
     string findAux(int id){
-        int pos = dobleHash(id,0);
+        int pos = dobleHash(id,1);
         
-        if(tabla[pos].id == id){
-            if(tabla[pos].estado) return tabla[pos].titulo + " H";
-            else return tabla[pos].titulo + " D";
+        if(this->tabla[pos].id == id){
+            if(this->tabla[pos].estado) return this->tabla[pos].titulo + " H";
+            else return this->tabla[pos].titulo + " D";
         }else{
-            int i=0;
-            while(i < size && (tabla[pos].ocupado || (!(tabla[pos].ocupado) && eliminado[pos]))){ // (esta en rango && (esta ocupado || (no esta ocupado && fue eliminado)))
-                if(tabla[pos].id == id){
-                    if(tabla[pos].estado) return tabla[pos].titulo + " H";
-                    else return tabla[pos].titulo + " D";
+            int i=1;
+            while(i < size && (this->tabla[pos].ocupado || (!(this->tabla[pos].ocupado) && this->eliminado[pos]))){ // (esta en rango && (esta ocupado || (no esta ocupado && fue eliminado)))
+                if(this->tabla[pos].id == id){
+                    if(this->tabla[pos].estado) return this->tabla[pos].titulo + " H";
+                    else return this->tabla[pos].titulo + " D";
                 }
-                pos = dobleHash(id, ++i);
+                i++;
             }
             return "libro_no_encontrado"; 
         }
     }
 
     bool toggleAux(int id){
-        int pos = dobleHash(id, 0);  // Empezar con el primer intento de hash
-    
-        for (int i = 0; i < size; i++) {
-        int pos = dobleHash(id, 0);  // Empezar con el primer intento de hash
+        int pos = dobleHash(id,1);
         
-        for (int i = 0; i < size; i++) {
-            if (tabla[pos].ocupado && tabla[pos].id == id) {
-                // Libro encontrado, cambiar estado
-                if (tabla[pos].estado) {
-                    tabla[pos].estado = false;
-                    cantidad_disponible--;
-                } else {
-                    tabla[pos].estado = true;
-                    cantidad_disponible++;
-                }
-                return true;
+        if(this->tabla[pos].id == id){
+            if(tabla[pos].estado) {
+                tabla[pos].estado = false;
+                cantidad_disponible--;
             }
-            // Continuar con el siguiente intento si no se encuentra
-            pos = dobleHash(id, i + 1);
+            else{
+                tabla[pos].estado = true;
+                cantidad_disponible++;
+            }
+            return true;
         }
-        
-        // Libro no encontrado
-        return false;
-    }
-    
-    // Libro no encontrado
-    return false;        
-        
+        else {
+            int intento = 2;
+            while(intento < size && (this->tabla[pos].ocupado || (!(this->tabla[pos].ocupado) && this->eliminado[pos]))){
+                pos = dobleHash(id,intento);
+                if(this->tabla[pos].id == id){
+                   if(tabla[pos].estado) {
+                       tabla[pos].estado = false;
+                       cantidad_disponible--;
+                   }
+                   else{
+                       tabla[pos].estado = true;
+                       cantidad_disponible++;
+                   }
+                   return true;
+                }
+                intento++;
+            }
+            return false;
+        }
     }
     //Atributos privados
 
@@ -167,15 +173,15 @@ class Libreria2{
     
     //Contructor
     Libreria2(int sizeN){
-        size = this->sigPrimo(sizeN);
-        tabla = new libro[size];
-        eliminado = new bool[size]();
-        for(int i = 0; i< size; i++){ 
+        int new_size = this->sigPrimo(sizeN);
+        tabla = new libro[new_size];
+        for(int i = 0; i< new_size; i++){ 
             tabla[i].estado = false;
             tabla[i].id = 0;
             tabla[i].titulo = "";
             tabla[i].ocupado = false;
         }
+        size = new_size;
         cantidad_disponible = 0;
         cantidad_total = 0;
     }
@@ -218,6 +224,6 @@ class Libreria2{
     //PRE: -
     //POS: Devuelve la cantidad de libros deshabilitados en la libreria
     int cantidadDeshabilitados(){
-        return this->cantidad_total - cantidad_disponible;
+        return this->cantidad_total - this->cantidad_disponible;
     }
 };
