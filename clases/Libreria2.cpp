@@ -64,7 +64,7 @@ class Libreria2{
         libro* old_tabla = tabla;  // Save old tabla
         bool* old_eliminado = eliminado;  // Save old eliminado
         
-        size = sigPrimo(size + 1);  // Update size to next prime
+        size = sigPrimo(size);  // Update size to next prime
         tabla = new libro[size];
         eliminado = new bool[size]();
         
@@ -75,8 +75,8 @@ class Libreria2{
         
         for (int i = 0; i < old_size; i++) {
             if (old_tabla[i].ocupado) {
-                int pos = dobleHash(old_tabla[i].id, 1);
-                int intento = 1;
+                int pos = dobleHash(old_tabla[i].id, 0);
+                int intento = 0;
                 while (tabla[pos].ocupado) {
                     pos = dobleHash(old_tabla[i].id, intento);
                     intento++;
@@ -91,16 +91,14 @@ class Libreria2{
     }
     
     void agregarAHash(int id, string titulo){
-        int pos = dobleHash(id,1);
-        int i=1;
+        int pos = dobleHash(id,0);
+        int i=0;
         while(this->tabla[pos].ocupado){
-            pos = dobleHash(id,i+1);
-            i++;
+            pos = dobleHash(id, ++i);
         }
         this->tabla[pos].id = id;
         this->tabla[pos].titulo = titulo;
         this->tabla[pos].estado = this->tabla[pos].ocupado = true;
-        size++;
         cantidad_total++;
         cantidad_disponible++;
     }
@@ -113,19 +111,19 @@ class Libreria2{
     }  
     
     string findAux(int id){
-        int pos = dobleHash(id,1);
+        int pos = dobleHash(id,0);
         
         if(this->tabla[pos].id == id){
             if(this->tabla[pos].estado) return this->tabla[pos].titulo + " H";
             else return this->tabla[pos].titulo + " D";
         }else{
-            int i=1;
+            int i=0;
             while(i < size && (this->tabla[pos].ocupado || (!(this->tabla[pos].ocupado) && this->eliminado[pos]))){ // (esta en rango && (esta ocupado || (no esta ocupado && fue eliminado)))
                 if(this->tabla[pos].id == id){
                     if(this->tabla[pos].estado) return this->tabla[pos].titulo + " H";
                     else return this->tabla[pos].titulo + " D";
                 }
-                i++;
+                pos = dobleHash(id, ++i);
             }
             return "libro_no_encontrado"; 
         }
@@ -146,7 +144,7 @@ class Libreria2{
             return true;
         }
         else {
-            int intento = 2;
+            int intento = 1;
             while(intento < size && (this->tabla[pos].ocupado || (!(this->tabla[pos].ocupado) && this->eliminado[pos]))){
                 pos = dobleHash(id,intento);
                 if(this->tabla[pos].id == id){
@@ -173,15 +171,15 @@ class Libreria2{
     
     //Contructor
     Libreria2(int sizeN){
-        int new_size = this->sigPrimo(sizeN);
-        tabla = new libro[new_size];
-        for(int i = 0; i< new_size; i++){ 
+        size = this->sigPrimo(sizeN);
+        tabla = new libro[size];
+        eliminado = new bool[size]();
+        for(int i = 0; i< size; i++){ 
             tabla[i].estado = false;
             tabla[i].id = 0;
             tabla[i].titulo = "";
             tabla[i].ocupado = false;
         }
-        size = new_size;
         cantidad_disponible = 0;
         cantidad_total = 0;
     }
