@@ -15,6 +15,7 @@ class Libreria{
         };
 
     //Atributos privados
+    Libreria* libreria;
     libroAVL* raiz; 
     int cantidad_total = 0;
     int cantidad_disponible = 0;
