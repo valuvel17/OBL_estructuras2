@@ -51,7 +51,7 @@ class Libreria2{
     }
 
     int hash2(int key){
-        return (key*key) % size;
+        return (key*key+1) % size;
     }
 
     //dobleHash
@@ -64,8 +64,8 @@ class Libreria2{
         libro* old_tabla = tabla;  // Save old tabla
         bool* old_eliminado = eliminado;  // Save old eliminado
         
-        size = sigPrimo(size);  // Update size to next prime
-        tabla = new libro[size];
+        size = sigPrimo(size*2);  // Update size to next prime
+        tabla = new libro[size]();
         eliminado = new bool[size]();
         
         for (int i = 0; i < size; i++) {
@@ -75,11 +75,10 @@ class Libreria2{
         
         for (int i = 0; i < old_size; i++) {
             if (old_tabla[i].ocupado) {
-                int pos = dobleHash(old_tabla[i].id, 0);
-                int intento = 0;
+                int j = 0;
+                int pos = dobleHash(old_tabla[i].id, j);
                 while (tabla[pos].ocupado) {
-                    pos = dobleHash(old_tabla[i].id, intento);
-                    intento++;
+                    pos = dobleHash(old_tabla[i].id, ++j);
                 }
                 tabla[pos] = old_tabla[i];
                 eliminado[pos] = old_eliminado[i];
@@ -91,9 +90,9 @@ class Libreria2{
     }
     
     void agregarAHash(int id, string titulo){
-        int pos = dobleHash(id,0);
-        int i=0;
-        while(tabla[pos].ocupado){
+        int i = 0;
+        int pos = dobleHash(id, i);
+        while (tabla[pos].ocupado) {
             pos = dobleHash(id, ++i);
         }
         tabla[pos].id = id;
