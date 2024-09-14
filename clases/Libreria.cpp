@@ -205,8 +205,8 @@ class Libreria{
         return this->cantidad_total - this->cantidad_disponible;
     }
 
+    // Destructor
     void destruir(){
         destruirAVL(this->raiz);
-        delete this;
     }
 };

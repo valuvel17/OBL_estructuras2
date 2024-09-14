@@ -28,8 +28,8 @@ int main(){
             case 'F': {
                 int id = 0;
                 cin >> id;
-                string titulo = nueva->find(id);
-                cout << titulo << endl;
+                string respuesta = nueva->find(id);
+                cout << respuesta << endl;
             } break;
 
             case 'T':{
