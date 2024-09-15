@@ -45,27 +45,32 @@ class Libreria2{
         return candidato;
     }
     
-
+    //PRE: Recibe un int cualquiera
+    //POS: Devuelve una posicion valida en la tabla
     int hash1(int key){
-        return abs(key*17) % size;
+        return abs(sigPrimo(key)) % size;
     }
 
-    int hash2(int key){
-        int h = abs((key*key) + 1) % size;
-        return (h == 0) ? 1 : h;
+    //PRE: Recibe un int cualquiera
+    //POS: Devuelve una posicion valida en la tabla
+    int hash2(int key) {
+        return abs(sigPrimo(key))*17 % size;  
     }
 
-    //dobleHash
+    //PRE:
+    //POS:
     int dobleHash(int key, int i){
-       return abs(hash1(key) + i*hash2(key))%size;
+       return (abs(hash1(key) + i*hash2(key))) % size;
     }
-
+    
+    //PRE: 
+    //POS: Cambia el tamaño de la tabla y reubica todos los libros 
     void reHash() {
         int old_size = size;
-        libro* old_tabla = tabla;  // Save old tabla
-        bool* old_eliminado = eliminado;  // Save old eliminado
+        libro* old_tabla = tabla;  
+        bool* old_eliminado = eliminado;  
         
-        size = sigPrimo(size*2);  // Update size to next prime
+        size = sigPrimo(size*2);  
         tabla = new libro[size];
         eliminado = new bool[size]();
         
@@ -76,8 +81,8 @@ class Libreria2{
         
         for (int i = 0; i < old_size; i++) {
             if (old_tabla[i].ocupado) {
-                int pos = dobleHash(old_tabla[i].id, 0);
-                int intento = 0;
+                int pos = dobleHash(old_tabla[i].id, 1);
+                int intento = 1;
                 while (tabla[pos].ocupado) {
                     pos = dobleHash(old_tabla[i].id, ++intento);
                 }
@@ -86,16 +91,27 @@ class Libreria2{
             }
         }
 
-        delete[] old_tabla;  // Delete old tabla
-        delete[] old_eliminado;  // Delete old eliminado
+        delete[] old_tabla;  
+        delete[] old_eliminado;  
     }
     
+    //PRE: Recibe una id y el titulo.
+    //POS: Lo agrega a la tabla, en caso de que este ocupado y sea la misma id actualiza el titulo y el estado.
     void agregarAHash(int id, string titulo){
         int pos = dobleHash(id,1);
         int i=1;
+        //cout << " 1 posicion" << pos << endl;
         while(this->tabla[pos].ocupado){
-            pos = dobleHash(id,i+1);
-            i++;
+            if(this->tabla[pos].id == id){
+                this->tabla[pos].titulo = titulo;
+                if(!this->tabla[pos].estado){
+                    cantidad_disponible++;
+                    this->tabla[pos].estado = true;
+                }
+                return;   
+            }
+            pos = dobleHash(id,++i);
+            //cout << "posicion intento" << i << pos << endl;
         }
         this->tabla[pos].id = id;
         this->tabla[pos].titulo = titulo;
@@ -104,19 +120,24 @@ class Libreria2{
         cantidad_disponible++;
     }
     
+    //PRE: Recibe un id y un titulo
+    //POS: Agrega el libro a la libreria
     void addAux(int id, string titulo) {
-       // cout << "Intentando agregar: ID = " << id << ", Titulo = " << titulo << endl;
+        //cout << "Intentando agregar: ID = " << id << ", Titulo = " << titulo << endl;
         if (((float)cantidad_total / (float)size) > 0.7) {
-            //cout << "Realizando reHash..." << endl;
+           // cout << "Realizando reHash..." << endl;
             reHash();
         }
         agregarAHash(id, titulo);
         //cout << "Libro agregado: ID = " << id << endl;
     }
     
+
+    //PRE: Recibe un id
+    //POS: Devuelve el titulo y el estado en caso de existir, de lo contrario devuelve libro no encontrado
     string findAux(int id){
-        int pos = dobleHash(id, 0);
-        int i = 0;
+        int pos = dobleHash(id, 1);
+        int i = 1;
 
         while (i <= size && (this->tabla[pos].ocupado || (!(this->tabla[pos].ocupado) && this->eliminado[pos]))) {
             if (this->tabla[pos].id == id) {
@@ -128,9 +149,11 @@ class Libreria2{
         return "libro_no_encontrado"; 
     }
 
+    //PRE: Recibe un id 
+    //POS: Cambia el estado del libro con esa id
     bool toggleAux(int id){
-        int pos = dobleHash(id, 0);
-        int intento = 0;
+        int pos = dobleHash(id, 1);
+        int intento = 1;
 
         while (intento <= size && (this->tabla[pos].ocupado || (!(this->tabla[pos].ocupado) && this->eliminado[pos]))) {
             if (this->tabla[pos].id == id) {
@@ -150,7 +173,6 @@ class Libreria2{
     //Atributos privados
 
     public:
-
     //Funciones publicas
     
     //Contructor
