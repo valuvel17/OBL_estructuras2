@@ -9,9 +9,8 @@ using namespace std;
 int main()
 {
     int cantidad_operaciones = 0;
-    Libreria2* nueva = new Libreria2(cantidad_operaciones/2); // asumimos que la mitad de las entradas son adds
     cin >> cantidad_operaciones;
-    
+    Libreria2* nueva = new Libreria2(cantidad_operaciones/2); // asumimos que la mitad de las entradas son adds
     for(int i=0; i<cantidad_operaciones; i++){
         char* aux = new char[7];
         cin >> aux;
