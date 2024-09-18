@@ -72,7 +72,7 @@ class Libreria2{
     //PRE:
     //POS:
     int dobleHash(string key, int i){
-        int valorTotal = (abs(hash1(key) + i*sigPrimo(hash2(key))));
+        int valorTotal = (abs(hash1(key) + i*(hash2(key))));
         cout << "valor total : " << valorTotal << endl;
         cout << "valor modolu: " << (valorTotal % size) << endl; 
        return valorTotal % size;
