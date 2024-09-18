@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
     int cantidad_operaciones = 0;
-    Libreria2* nueva = new Libreria2(cantidad_operaciones/2); // asumimos que la mitad de las entradas son adds
+    Libreria2* nueva = new Libreria2(cantidad_operaciones);
     cin >> cantidad_operaciones;
     
     for(int i=0; i<cantidad_operaciones; i++){
@@ -18,7 +18,7 @@ int main()
         char letra = aux[0];
         switch (letra){
             case 'A':{
-                int id = 0;
+                string id = "";
                 string titulo = "";
                 cin >> id;
                 cin >> titulo;
@@ -26,14 +26,14 @@ int main()
             } break;
             
             case 'F': {
-                int id = 0;
+                string id = "";
                 cin >> id;
                 string respuesta = nueva->find(id);
                 cout << respuesta << endl;
             } break;
 
             case 'T':{
-                int id = 0;
+                string id = "";
                 cin >> id;
                 if (!(nueva->toggle(id))) cout << "libro_no_encontrado" << endl;
             } break;

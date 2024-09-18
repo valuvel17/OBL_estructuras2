@@ -1,28 +1,1199 @@
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 870
+valor modolu: 0
+ 1 posicion: 0
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 870
+valor modolu: 0
 dQW H
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 870
+valor modolu: 0
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 890
+valor modolu: 0
+ 1 posicion: 0
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 1353
+valor modolu: 1
+posicion intento : 2 posicion:1
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 870
+valor modolu: 0
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 890
+valor modolu: 0
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 1353
+valor modolu: 3
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 3
+ 1 posicion: 3
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 1306
+valor modolu: 1
+posicion intento : 2 posicion:1
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 870
+valor modolu: 0
+ 1 posicion: 0
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 1313
+valor modolu: 3
+posicion intento : 2 posicion:3
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 1756
+valor modolu: 1
+posicion intento : 3 posicion:1
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 2199
+valor modolu: 4
+posicion intento : 4 posicion:4
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 870
+valor modolu: 1
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 5
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 890
+valor modolu: 10
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 870
+valor modolu: 1
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 1313
+valor modolu: 4
+valor primer hash: 400
+valor segundo hash : 438
+valor total : 839
+valor modolu: 3
+ 1 posicion: 3
+valor primer hash: 417
+valor segundo hash : 435
+valor total : 856
+valor modolu: 9
+ 1 posicion: 9
+valor primer hash: 426
+valor segundo hash : 462
+valor total : 889
+valor modolu: 9
+ 1 posicion: 9
+valor primer hash: 426
+valor segundo hash : 462
+valor total : 1352
+valor modolu: 10
+posicion intento : 2 posicion:10
+valor primer hash: 426
+valor segundo hash : 462
+valor total : 1815
+valor modolu: 0
+posicion intento : 3 posicion:0
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 5
+ 1 posicion: 5
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 1306
+valor modolu: 8
+posicion intento : 2 posicion:8
+valor primer hash: 426
+valor segundo hash : 462
+valor total : 889
+valor modolu: 15
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 870
+valor modolu: 19
+valor primer hash: 400
+valor segundo hash : 438
+valor total : 839
+valor modolu: 11
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 870
+valor modolu: 19
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 1313
+valor modolu: 2
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 12
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 12
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 1306
+valor modolu: 18
+valor primer hash: 417
+valor segundo hash : 435
+valor total : 856
+valor modolu: 5
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 890
+valor modolu: 16
+valor primer hash: 425
+valor segundo hash : 457
+valor total : 886
+valor modolu: 12
+ 1 posicion: 12
+valor primer hash: 425
+valor segundo hash : 457
+valor total : 1347
+valor modolu: 13
+posicion intento : 2 posicion:13
+valor primer hash: 423
+valor segundo hash : 439
+valor total : 866
+valor modolu: 15
+ 1 posicion: 15
+valor primer hash: 423
+valor segundo hash : 439
+valor total : 1309
+valor modolu: 21
+posicion intento : 2 posicion:21
+valor primer hash: 404
+valor segundo hash : 428
+valor total : 835
+valor modolu: 7
+ 1 posicion: 7
+valor primer hash: 404
+valor segundo hash : 428
+valor total : 835
+valor modolu: 7
+valor primer hash: 154
+valor segundo hash : 156
+valor total : 311
+valor modolu: 12
+valor primer hash: 154
+valor segundo hash : 156
+valor total : 468
+valor modolu: 8
 libro_no_encontrado
+valor primer hash: 422
+valor segundo hash : 436
+valor total : 861
+valor modolu: 10
+ 1 posicion: 10
+valor primer hash: 426
+valor segundo hash : 442
+valor total : 869
+valor modolu: 18
+ 1 posicion: 18
+valor primer hash: 426
+valor segundo hash : 442
+valor total : 1312
+valor modolu: 1
+posicion intento : 2 posicion:1
+valor primer hash: 418
+valor segundo hash : 436
+valor total : 857
+valor modolu: 6
+ 1 posicion: 6
+valor primer hash: 424
+valor segundo hash : 452
+valor total : 881
+valor modolu: 7
+ 1 posicion: 7
+valor primer hash: 424
+valor segundo hash : 452
+valor total : 1338
+valor modolu: 4
+posicion intento : 2 posicion:4
+valor primer hash: 424
+valor segundo hash : 452
+valor total : 881
+valor modolu: 7
+valor primer hash: 424
+valor segundo hash : 452
+valor total : 1338
+valor modolu: 4
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 12
 XnrRzQ H
+valor primer hash: 426
+valor segundo hash : 460
+valor total : 887
+valor modolu: 13
+ 1 posicion: 13
+valor primer hash: 426
+valor segundo hash : 460
+valor total : 1348
+valor modolu: 14
+posicion intento : 2 posicion:14
+valor primer hash: 309
+valor segundo hash : 319
+valor total : 640
+valor modolu: 19
+ 1 posicion: 19
+valor primer hash: 309
+valor segundo hash : 319
+valor total : 971
+valor modolu: 5
+posicion intento : 2 posicion:5
+valor primer hash: 309
+valor segundo hash : 319
+valor total : 1302
+valor modolu: 14
+posicion intento : 3 posicion:14
+valor primer hash: 309
+valor segundo hash : 319
+valor total : 1633
+valor modolu: 0
+posicion intento : 4 posicion:0
+valor primer hash: 423
+valor segundo hash : 439
+valor total : 866
+valor modolu: 15
+valor primer hash: 423
+valor segundo hash : 439
+valor total : 1309
+valor modolu: 21
 DwyC H
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 12
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 1306
+valor modolu: 18
 UCHUt H
+valor primer hash: 309
+valor segundo hash : 319
+valor total : 640
+valor modolu: 29
+valor primer hash: 426
+valor segundo hash : 442
+valor total : 869
+valor modolu: 23
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 870
+valor modolu: 24
+valor primer hash: 424
+valor segundo hash : 452
+valor total : 881
+valor modolu: 35
+valor primer hash: 417
+valor segundo hash : 435
+valor total : 856
+valor modolu: 10
+valor primer hash: 418
+valor segundo hash : 436
+valor total : 857
+valor modolu: 11
+valor primer hash: 404
+valor segundo hash : 428
+valor total : 835
+valor modolu: 36
+valor primer hash: 422
+valor segundo hash : 436
+valor total : 861
+valor modolu: 15
+valor primer hash: 400
+valor segundo hash : 438
+valor total : 839
+valor modolu: 40
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 17
+valor primer hash: 425
+valor segundo hash : 457
+valor total : 886
+valor modolu: 40
+valor primer hash: 425
+valor segundo hash : 457
+valor total : 1347
+valor modolu: 31
+valor primer hash: 426
+valor segundo hash : 460
+valor total : 887
+valor modolu: 41
+valor primer hash: 426
+valor segundo hash : 462
+valor total : 889
+valor modolu: 43
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 890
+valor modolu: 44
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 17
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 1306
+valor modolu: 37
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 870
+valor modolu: 24
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 1309
+valor modolu: 40
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 1748
+valor modolu: 9
+valor primer hash: 423
+valor segundo hash : 439
+valor total : 866
+valor modolu: 20
+valor primer hash: 416
+valor segundo hash : 438
+valor total : 855
+valor modolu: 9
+ 1 posicion: 9
+valor primer hash: 416
+valor segundo hash : 438
+valor total : 1294
+valor modolu: 25
+posicion intento : 2 posicion:25
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 885
+valor modolu: 39
+ 1 posicion: 39
 19 16 3
+valor primer hash: 406
+valor segundo hash : 424
+valor total : 837
+valor modolu: 38
+ 1 posicion: 38
+valor primer hash: 433
+valor segundo hash : 453
+valor total : 890
+valor modolu: 44
+ 1 posicion: 44
+valor primer hash: 433
+valor segundo hash : 453
+valor total : 1347
+valor modolu: 31
+posicion intento : 2 posicion:31
+valor primer hash: 433
+valor segundo hash : 453
+valor total : 1804
+valor modolu: 18
+posicion intento : 3 posicion:18
+valor primer hash: 407
+valor segundo hash : 425
+valor total : 838
+valor modolu: 39
+ 1 posicion: 39
+valor primer hash: 407
+valor segundo hash : 425
+valor total : 1269
+valor modolu: 0
+posicion intento : 2 posicion:0
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 723
+valor modolu: 18
+ 1 posicion: 18
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 1090
+valor modolu: 9
+posicion intento : 2 posicion:9
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 1457
+valor modolu: 0
+posicion intento : 3 posicion:0
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 1824
+valor modolu: 38
+posicion intento : 4 posicion:38
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 2191
+valor modolu: 29
+posicion intento : 5 posicion:29
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 2558
+valor modolu: 20
+posicion intento : 6 posicion:20
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 2925
+valor modolu: 11
+posicion intento : 7 posicion:11
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 3292
+valor modolu: 2
+posicion intento : 8 posicion:2
+valor primer hash: 422
+valor segundo hash : 436
+valor total : 861
+valor modolu: 15
 EATQ H
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 885
+valor modolu: 39
 Bkzz H
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 870
+valor modolu: 24
+valor primer hash: 400
+valor segundo hash : 438
+valor total : 839
+valor modolu: 40
 dErMhe H
+valor primer hash: 419
+valor segundo hash : 459
+valor total : 880
+valor modolu: 34
+ 1 posicion: 34
 24 20 4
+valor primer hash: 414
+valor segundo hash : 444
+valor total : 863
+valor modolu: 17
+ 1 posicion: 17
+valor primer hash: 414
+valor segundo hash : 444
+valor total : 1312
+valor modolu: 43
+posicion intento : 2 posicion:43
+valor primer hash: 414
+valor segundo hash : 444
+valor total : 1761
+valor modolu: 22
+posicion intento : 3 posicion:22
+valor primer hash: 422
+valor segundo hash : 432
+valor total : 855
+valor modolu: 9
+ 1 posicion: 9
+valor primer hash: 422
+valor segundo hash : 432
+valor total : 1288
+valor modolu: 19
+posicion intento : 2 posicion:19
+valor primer hash: 416
+valor segundo hash : 436
+valor total : 855
+valor modolu: 9
+ 1 posicion: 9
+valor primer hash: 416
+valor segundo hash : 436
+valor total : 1294
+valor modolu: 25
+posicion intento : 2 posicion:25
+valor primer hash: 416
+valor segundo hash : 436
+valor total : 1733
+valor modolu: 41
+posicion intento : 3 posicion:41
+valor primer hash: 416
+valor segundo hash : 436
+valor total : 2172
+valor modolu: 10
+posicion intento : 4 posicion:10
+valor primer hash: 416
+valor segundo hash : 436
+valor total : 2611
+valor modolu: 26
+posicion intento : 5 posicion:26
 27 23 4
+valor primer hash: 431
+valor segundo hash : 453
+valor total : 888
+valor modolu: 42
+ 1 posicion: 42
 28 24 4
+valor primer hash: 433
+valor segundo hash : 453
+valor total : 890
+valor modolu: 44
+valor primer hash: 433
+valor segundo hash : 453
+valor total : 1347
+valor modolu: 31
+valor primer hash: 433
+valor segundo hash : 453
+valor total : 1804
+valor modolu: 18
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 890
+valor modolu: 44
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 885
+valor modolu: 39
 Bkzz H
+valor primer hash: 420
+valor segundo hash : 438
+valor total : 859
+valor modolu: 13
+ 1 posicion: 13
+valor primer hash: 423
+valor segundo hash : 461
+valor total : 886
+valor modolu: 40
+ 1 posicion: 40
+valor primer hash: 423
+valor segundo hash : 461
+valor total : 1349
+valor modolu: 33
+posicion intento : 2 posicion:33
+valor primer hash: 426
+valor segundo hash : 442
+valor total : 869
+valor modolu: 23
 kxo H
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 17
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 1306
+valor modolu: 37
 UCHUt H
+valor primer hash: 431
+valor segundo hash : 453
+valor total : 888
+valor modolu: 42
+valor primer hash: 426
+valor segundo hash : 454
+valor total : 883
+valor modolu: 37
+ 1 posicion: 37
+valor primer hash: 426
+valor segundo hash : 454
+valor total : 1340
+valor modolu: 24
+posicion intento : 2 posicion:24
+valor primer hash: 426
+valor segundo hash : 454
+valor total : 1797
+valor modolu: 11
+posicion intento : 3 posicion:11
+valor primer hash: 426
+valor segundo hash : 454
+valor total : 2254
+valor modolu: 45
+posicion intento : 4 posicion:45
+valor primer hash: 369
+valor segundo hash : 387
+valor total : 758
+valor modolu: 6
+ 1 posicion: 6
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 888
+valor modolu: 42
+ 1 posicion: 42
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 1349
+valor modolu: 33
+posicion intento : 2 posicion:33
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 1810
+valor modolu: 24
+posicion intento : 3 posicion:24
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 2271
+valor modolu: 15
+posicion intento : 4 posicion:15
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 2732
+valor modolu: 6
+posicion intento : 5 posicion:6
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 3193
+valor modolu: 44
+posicion intento : 6 posicion:44
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 3654
+valor modolu: 35
+posicion intento : 7 posicion:35
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 4115
+valor modolu: 26
+posicion intento : 8 posicion:26
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 4576
+valor modolu: 17
+posicion intento : 9 posicion:17
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 5037
+valor modolu: 8
+posicion intento : 10 posicion:8
 33 26 7
+valor primer hash: 407
+valor segundo hash : 425
+valor total : 838
+valor modolu: 62
+valor primer hash: 356
+valor segundo hash : 360
+valor total : 723
+valor modolu: 44
+valor primer hash: 369
+valor segundo hash : 387
+valor total : 758
+valor modolu: 79
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 888
+valor modolu: 15
+valor primer hash: 431
+valor segundo hash : 437
+valor total : 870
+valor modolu: 94
+valor primer hash: 417
+valor segundo hash : 435
+valor total : 856
+valor modolu: 80
+valor primer hash: 418
+valor segundo hash : 436
+valor total : 857
+valor modolu: 81
+valor primer hash: 420
+valor segundo hash : 438
+valor total : 859
+valor modolu: 83
+valor primer hash: 422
+valor segundo hash : 436
+valor total : 861
+valor modolu: 85
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 87
+valor primer hash: 433
+valor segundo hash : 453
+valor total : 890
+valor modolu: 17
+valor primer hash: 422
+valor segundo hash : 432
+valor total : 855
+valor modolu: 79
+valor primer hash: 422
+valor segundo hash : 432
+valor total : 1288
+valor modolu: 27
+valor primer hash: 423
+valor segundo hash : 439
+valor total : 866
+valor modolu: 90
+valor primer hash: 414
+valor segundo hash : 444
+valor total : 863
+valor modolu: 87
+valor primer hash: 414
+valor segundo hash : 444
+valor total : 1312
+valor modolu: 51
+valor primer hash: 426
+valor segundo hash : 442
+valor total : 869
+valor modolu: 93
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 870
+valor modolu: 94
+valor primer hash: 427
+valor segundo hash : 439
+valor total : 1313
+valor modolu: 52
+valor primer hash: 416
+valor segundo hash : 438
+valor total : 855
+valor modolu: 79
+valor primer hash: 416
+valor segundo hash : 438
+valor total : 1294
+valor modolu: 33
+valor primer hash: 416
+valor segundo hash : 436
+valor total : 855
+valor modolu: 79
+valor primer hash: 416
+valor segundo hash : 436
+valor total : 1294
+valor modolu: 33
+valor primer hash: 416
+valor segundo hash : 436
+valor total : 1733
+valor modolu: 84
+valor primer hash: 309
+valor segundo hash : 319
+valor total : 640
+valor modolu: 58
+valor primer hash: 425
+valor segundo hash : 457
+valor total : 886
+valor modolu: 13
+valor primer hash: 423
+valor segundo hash : 461
+valor total : 886
+valor modolu: 13
+valor primer hash: 423
+valor segundo hash : 461
+valor total : 1349
+valor modolu: 88
+valor primer hash: 419
+valor segundo hash : 459
+valor total : 880
+valor modolu: 7
+valor primer hash: 424
+valor segundo hash : 452
+valor total : 881
+valor modolu: 8
+valor primer hash: 404
+valor segundo hash : 428
+valor total : 835
+valor modolu: 59
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 863
+valor modolu: 87
+valor primer hash: 420
+valor segundo hash : 440
+valor total : 1306
+valor modolu: 45
+valor primer hash: 406
+valor segundo hash : 424
+valor total : 837
+valor modolu: 61
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 885
+valor modolu: 12
+valor primer hash: 400
+valor segundo hash : 438
+valor total : 839
+valor modolu: 63
+valor primer hash: 426
+valor segundo hash : 460
+valor total : 887
+valor modolu: 14
+valor primer hash: 431
+valor segundo hash : 453
+valor total : 888
+valor modolu: 15
+valor primer hash: 431
+valor segundo hash : 453
+valor total : 1345
+valor modolu: 84
+valor primer hash: 431
+valor segundo hash : 453
+valor total : 1802
+valor modolu: 56
+valor primer hash: 426
+valor segundo hash : 462
+valor total : 889
+valor modolu: 16
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 890
+valor modolu: 17
+valor primer hash: 427
+valor segundo hash : 461
+valor total : 1353
+valor modolu: 92
+valor primer hash: 426
+valor segundo hash : 454
+valor total : 883
+valor modolu: 10
+valor primer hash: 417
+valor segundo hash : 463
+valor total : 884
+valor modolu: 11
+ 1 posicion: 11
+valor primer hash: 433
+valor segundo hash : 453
+valor total : 890
+valor modolu: 17
+valor primer hash: 417
+valor segundo hash : 463
+valor total : 884
+valor modolu: 11
 nkjwl H
+valor primer hash: 423
+valor segundo hash : 461
+valor total : 886
+valor modolu: 13
+valor primer hash: 423
+valor segundo hash : 461
+valor total : 1349
+valor modolu: 88
 iraJ H
+valor primer hash: 364
+valor segundo hash : 386
+valor total : 753
+valor modolu: 74
+ 1 posicion: 74
+valor primer hash: 422
+valor segundo hash : 432
+valor total : 855
+valor modolu: 79
+valor primer hash: 422
+valor segundo hash : 432
+valor total : 1288
+valor modolu: 27
+valor primer hash: 426
+valor segundo hash : 454
+valor total : 883
+valor modolu: 10
 GzLdjW H
+valor primer hash: 420
+valor segundo hash : 438
+valor total : 859
+valor modolu: 83
+ 1 posicion: 83
+valor primer hash: 420
+valor segundo hash : 438
+valor total : 1298
+valor modolu: 37
+posicion intento : 2 posicion:37
+valor primer hash: 424
+valor segundo hash : 448
+valor total : 873
+valor modolu: 0
+ 1 posicion: 0
+valor primer hash: 408
+valor segundo hash : 436
+valor total : 847
+valor modolu: 71
+ 1 posicion: 71
+valor primer hash: 427
+valor segundo hash : 457
+valor total : 888
+valor modolu: 15
+valor primer hash: 422
+valor segundo hash : 432
+valor total : 855
+valor modolu: 79
+valor primer hash: 422
+valor segundo hash : 432
+valor total : 1288
+valor modolu: 27
 mOqzrc D
+valor primer hash: 367
+valor segundo hash : 383
+valor total : 756
+valor modolu: 77
+ 1 posicion: 77
+valor primer hash: 408
+valor segundo hash : 428
+valor total : 839
+valor modolu: 63
+ 1 posicion: 63
+valor primer hash: 408
+valor segundo hash : 428
+valor total : 1270
+valor modolu: 9
+posicion intento : 2 posicion:9
+valor primer hash: 369
+valor segundo hash : 387
+valor total : 758
+valor modolu: 79
 vmRRUH H
+valor primer hash: 424
+valor segundo hash : 450
+valor total : 881
+valor modolu: 8
+ 1 posicion: 8
+valor primer hash: 424
+valor segundo hash : 450
+valor total : 1338
+valor modolu: 77
+posicion intento : 2 posicion:77
+valor primer hash: 424
+valor segundo hash : 450
+valor total : 1795
+valor modolu: 49
+posicion intento : 3 posicion:49
+valor primer hash: 309
+valor segundo hash : 319
+valor total : 640
+valor modolu: 58
 ZgKs H
+valor primer hash: 367
+valor segundo hash : 383
+valor total : 756
+valor modolu: 77
+ 1 posicion: 77
+valor primer hash: 431
+valor segundo hash : 453
+valor total : 888
+valor modolu: 15
+valor primer hash: 431
+valor segundo hash : 453
+valor total : 1345
+valor modolu: 84
+valor primer hash: 431
+valor segundo hash : 453
+valor total : 1802
+valor modolu: 56
+valor primer hash: 419
+valor segundo hash : 433
+valor total : 858
+valor modolu: 82
+ 1 posicion: 82
+valor primer hash: 413
+valor segundo hash : 427
+valor total : 844
+valor modolu: 68
+ 1 posicion: 68
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 885
+valor modolu: 12
+ 1 posicion: 12
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 1346
+valor modolu: 85
+posicion intento : 2 posicion:85
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 1807
+valor modolu: 61
+posicion intento : 3 posicion:61
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 2268
+valor modolu: 37
+posicion intento : 4 posicion:37
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 2729
+valor modolu: 13
+posicion intento : 5 posicion:13
+valor primer hash: 424
+valor segundo hash : 460
+valor total : 3190
+valor modolu: 86
+posicion intento : 6 posicion:86
+valor primer hash: 423
+valor segundo hash : 461
+valor total : 886
+valor modolu: 13
+valor primer hash: 423
+valor segundo hash : 461
+valor total : 1349
+valor modolu: 88
 iraJ H
+valor primer hash: 427
+valor segundo hash : 441
+valor total : 870
+valor modolu: 94
+ 1 posicion: 94
+valor primer hash: 427
+valor segundo hash : 441
+valor total : 1313
+valor modolu: 52
+posicion intento : 2 posicion:52
+valor primer hash: 427
+valor segundo hash : 441
+valor total : 1756
+valor modolu: 10
+posicion intento : 3 posicion:10
+valor primer hash: 427
+valor segundo hash : 441
+valor total : 2199
+valor modolu: 65
+posicion intento : 4 posicion:65
+valor primer hash: 417
+valor segundo hash : 435
+valor total : 856
+valor modolu: 80
+valor primer hash: 426
+valor segundo hash : 462
+valor total : 889
+valor modolu: 16
 45 36 9
+valor primer hash: 418
+valor segundo hash : 452
+valor total : 875
+valor modolu: 2
+ 1 posicion: 2
+valor primer hash: 416
+valor segundo hash : 420
+valor total : 837
+valor modolu: 61
+ 1 posicion: 61
+valor primer hash: 416
+valor segundo hash : 420
+valor total : 1258
+valor modolu: 94
+posicion intento : 2 posicion:94
+valor primer hash: 416
+valor segundo hash : 420
+valor total : 1679
+valor modolu: 30
+posicion intento : 3 posicion:30
+valor primer hash: 421
+valor segundo hash : 431
+valor total : 854
+valor modolu: 78
+ 1 posicion: 78
+valor primer hash: 421
+valor segundo hash : 455
+valor total : 878
+valor modolu: 5
+ 1 posicion: 5
+valor primer hash: 416
+valor segundo hash : 438
+valor total : 855
+valor modolu: 79
+valor primer hash: 416
+valor segundo hash : 438
+valor total : 1294
+valor modolu: 33
 usQKp H
+valor primer hash: 444
+valor segundo hash : 464
+valor total : 911
+valor modolu: 38
+ 1 posicion: 38
+valor primer hash: 407
+valor segundo hash : 427
+valor total : 838
+valor modolu: 62
+ 1 posicion: 62
+valor primer hash: 407
+valor segundo hash : 427
+valor total : 1269
+valor modolu: 8
+posicion intento : 2 posicion:8
+valor primer hash: 407
+valor segundo hash : 427
+valor total : 1700
+valor modolu: 51
+posicion intento : 3 posicion:51
+valor primer hash: 407
+valor segundo hash : 427
+valor total : 2131
+valor modolu: 94
+posicion intento : 4 posicion:94
+valor primer hash: 407
+valor segundo hash : 427
+valor total : 2562
+valor modolu: 40
+posicion intento : 5 posicion:40
 51 42 9
+valor primer hash: 425
+valor segundo hash : 457
+valor total : 886
+valor modolu: 13
+valor primer hash: 408
+valor segundo hash : 436
+valor total : 847
+valor modolu: 71
+valor primer hash: 420
+valor segundo hash : 442
+valor total : 863
+valor modolu: 87
+ 1 posicion: 87
+valor primer hash: 420
+valor segundo hash : 442
+valor total : 1306
+valor modolu: 45
+posicion intento : 2 posicion:45
+valor primer hash: 420
+valor segundo hash : 442
+valor total : 1749
+valor modolu: 3
+posicion intento : 3 posicion:3
+valor primer hash: 412
+valor segundo hash : 458
+valor total : 873
+valor modolu: 0
+valor primer hash: 412
+valor segundo hash : 458
+valor total : 1334
+valor modolu: 73
 libro_no_encontrado
+valor primer hash: 425
+valor segundo hash : 447
+valor total : 874
+valor modolu: 1
+ 1 posicion: 1
+valor primer hash: 422
+valor segundo hash : 442
+valor total : 865
+valor modolu: 89
+ 1 posicion: 89
+valor primer hash: 418
+valor segundo hash : 452
+valor total : 875
+valor modolu: 2
 CzKQ H
+valor primer hash: 423
+valor segundo hash : 437
+valor total : 862
+valor modolu: 86
+ 1 posicion: 86
+valor primer hash: 423
+valor segundo hash : 437
+valor total : 1301
+valor modolu: 40
+posicion intento : 2 posicion:40
+valor primer hash: 423
+valor segundo hash : 437
+valor total : 1740
+valor modolu: 91
+posicion intento : 3 posicion:91
+valor primer hash: 418
+valor segundo hash : 444
+valor total : 867
+valor modolu: 91
+ 1 posicion: 91
+valor primer hash: 418
+valor segundo hash : 444
+valor total : 1316
+valor modolu: 55
+posicion intento : 2 posicion:55

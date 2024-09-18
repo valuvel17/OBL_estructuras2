@@ -1,6 +1,66 @@
+valor primer hash: 102
+valor segundo hash : 104
+valor total : 206
+valor modolu: 0
+ 1 posicion: 0
+valor primer hash: 101
+valor segundo hash : 103
+valor total : 204
+valor modolu: 0
+ 1 posicion: 0
+valor primer hash: 101
+valor segundo hash : 103
+valor total : 307
+valor modolu: 1
+posicion intento : 2 posicion:1
+valor primer hash: 102
+valor segundo hash : 104
+valor total : 206
+valor modolu: 0
 Don_Quijote H
+valor primer hash: 112
+valor segundo hash : 112
+valor total : 224
+valor modolu: 0
+valor primer hash: 112
+valor segundo hash : 112
+valor total : 336
+valor modolu: 0
+valor primer hash: 112
+valor segundo hash : 112
+valor total : 448
+valor modolu: 0
 libro_no_encontrado
+valor primer hash: 102
+valor segundo hash : 104
+valor total : 206
+valor modolu: 0
+valor primer hash: 102
+valor segundo hash : 104
+valor total : 206
+valor modolu: 0
 Don_Quijote D
+valor primer hash: 102
+valor segundo hash : 104
+valor total : 206
+valor modolu: 1
+valor primer hash: 101
+valor segundo hash : 103
+valor total : 204
+valor modolu: 4
+valor primer hash: 103
+valor segundo hash : 105
+valor total : 208
+valor modolu: 3
+ 1 posicion: 3
 3 2 1
+valor primer hash: 114
+valor segundo hash : 116
+valor total : 230
+valor modolu: 0
 libro_no_encontrado
+valor primer hash: 101
+valor segundo hash : 103
+valor total : 204
+valor modolu: 4
 3 1 2
