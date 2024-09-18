@@ -10,7 +10,7 @@ int main()
 {
     int cantidad_operaciones = 0;
     cin >> cantidad_operaciones;
-    Libreria2* nueva = new Libreria2(cantidad_operaciones/2); // asumimos que la mitad de las entradas son adds
+    Libreria2* nueva = new Libreria2(cantidad_operaciones/3); // asumimos que la mitad de las entradas son adds
     for(int i=0; i<cantidad_operaciones; i++){
         char* aux = new char[7];
         cin >> aux;

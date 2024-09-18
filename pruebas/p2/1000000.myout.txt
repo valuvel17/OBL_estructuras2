@@ -84932,6 +84932,7 @@ dPzC H
 142149 110502 31647
 alNVg H
 nGv D
+<<<<<<< HEAD
 YmZKAS H
 fGODQ H
 rvY D
@@ -270457,3 +270458,5 @@ FII H
 AJdUKa H
 MYNdW H
 tfJUI H
+=======
+>>>>>>> version-funcional
