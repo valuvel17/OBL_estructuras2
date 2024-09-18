@@ -8,7 +8,7 @@ class Libreria2{
     private:
     //Estructuras privadas
     struct libro{
-        string id;
+        int id;
         string titulo;
         bool estado;
         bool ocupado;
@@ -22,7 +22,7 @@ class Libreria2{
     int cantidad_disponible = 0;
 
     //Funciones privadas
-//**************************************************** hacer funcion de pasar de string a int para esto de los primos capasz */
+
     //PRE: Recibe un int cualquiera
     //POS: Devuelve true si es un numero primo
     bool esPrimo(int n) {
@@ -47,35 +47,20 @@ class Libreria2{
     
     //PRE: Recibe un int cualquiera
     //POS: Devuelve una posicion valida en la tabla
-    int hash1(string key){
-        int valor = 0;
-        for(int i = 0; i < key.length(); i++){
-            valor += key.at(i);
-        }
-        cout << "valor primer hash: " << valor << endl;
-        return valor;
+    int hash1(int key){
+        return abs(sigPrimo(key)) % size;
     }
-
 
     //PRE: Recibe un int cualquiera
     //POS: Devuelve una posicion valida en la tabla
-    int hash2(string key) {
-        int valor = 0;
-        for(int i = 0; i < key.length(); i++){
-            valor += (key.at(i) + i) ^ i;
-        }
-        cout << "valor segundo hash : " << valor << endl;
-        return valor;  
+    int hash2(int key) {
+        return abs(sigPrimo(key))*17 % size;  
     }
-
 
     //PRE:
     //POS:
-    int dobleHash(string key, int i){
-        int valorTotal = (abs(hash1(key) + i*(hash2(key))));
-        cout << "valor total : " << valorTotal << endl;
-        cout << "valor modolu: " << (valorTotal % size) << endl; 
-       return valorTotal % size;
+    int dobleHash(int key, int i){
+       return (abs(hash1(key) + i*hash2(key))) % size;
     }
     
     //PRE: 
@@ -112,10 +97,10 @@ class Libreria2{
     
     //PRE: Recibe una id y el titulo.
     //POS: Lo agrega a la tabla, en caso de que este ocupado y sea la misma id actualiza el titulo y el estado.
-    void agregarAHash(string id, string titulo){
+    void agregarAHash(int id, string titulo){
         int pos = dobleHash(id,1);
         int i=1;
-        cout << " 1 posicion: " << pos << endl;
+        //cout << " 1 posicion" << pos << endl;
         while(this->tabla[pos].ocupado){
             if(this->tabla[pos].id == id){
                 this->tabla[pos].titulo = titulo;
@@ -126,7 +111,7 @@ class Libreria2{
                 return;   
             }
             pos = dobleHash(id,++i);
-            cout << "posicion intento : " << i << " posicion:" << pos << endl;
+            //cout << "posicion intento" << i << pos << endl;
         }
         this->tabla[pos].id = id;
         this->tabla[pos].titulo = titulo;
@@ -137,7 +122,7 @@ class Libreria2{
     
     //PRE: Recibe un id y un titulo
     //POS: Agrega el libro a la libreria
-    void addAux(string id, string titulo) {
+    void addAux(int id, string titulo) {
         //cout << "Intentando agregar: ID = " << id << ", Titulo = " << titulo << endl;
         if (((float)cantidad_total / (float)size) > 0.7) {
            // cout << "Realizando reHash..." << endl;
@@ -150,7 +135,7 @@ class Libreria2{
 
     //PRE: Recibe un id
     //POS: Devuelve el titulo y el estado en caso de existir, de lo contrario devuelve libro no encontrado
-    string findAux(string id){
+    string findAux(int id){
         int pos = dobleHash(id, 1);
         int i = 1;
 
@@ -166,7 +151,7 @@ class Libreria2{
 
     //PRE: Recibe un id 
     //POS: Cambia el estado del libro con esa id
-    bool toggleAux(string id){
+    bool toggleAux(int id){
         int pos = dobleHash(id, 1);
         int intento = 1;
 
@@ -197,7 +182,7 @@ class Libreria2{
         eliminado = new bool[size]();
         for(int i = 0; i< size; i++){ 
             tabla[i].estado = false;
-            tabla[i].id = "";
+            tabla[i].id = 0;
             tabla[i].titulo = "";
             tabla[i].ocupado = false;
         }
@@ -212,19 +197,19 @@ class Libreria2{
 
     //PRE: Recibe un id y un titulo
     //POS: Agrega el libro a libreria
-    void add(string id, string titulo){
+    void add(int id, string titulo){
         addAux(id,titulo);
     }
     
     //PRE: Recibe una id
     //POS: Devuelve el título del libro si existe en la libreria
-    string find(string id){
+    string find(int id){
         return findAux(id);
     }
 
     //PRE: Recibe la id
     //POS: Devuelve true si esta y false si no.
-    bool toggle(string id){
+    bool toggle(int id){
         return toggleAux(id);
     }
     
