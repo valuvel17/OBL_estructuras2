@@ -1,0 +1,7 @@
+Añadido pedido ID: 1 con prioridad: 10. Tope actual del heap: 2
+Removido pedido ID: 1. Tope actual del heap: 1
+Añadido pedido ID: 2 con prioridad: 5. Tope actual del heap: 2
+Añadido pedido ID: 3 con prioridad: 10. Tope actual del heap: 3
+Removido pedido ID: 2. Tope actual del heap: 2
+Añadido pedido ID: 4 con prioridad: 5. Tope actual del heap: 3
+Añadido pedido ID: 5 con prioridad: 0. Tope actual del heap: 4
