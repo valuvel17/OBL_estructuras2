@@ -62,19 +62,19 @@ private:
             aborrar = NULL;
         }
         else
-        {
             eliminar(l->sig, id);
-        }
     }
 
     bool comparar(orden o1, orden o2)
     {
-        if (o2.prioridad < o1.prioridad)
-            return true;
-        else if (o2.prioridad > o1.prioridad)
-            return false;
+        if (o2.prioridad < o1.prioridad) return true;
+        else if (o2.prioridad > o1.prioridad) return false;
         else
-            return o2.paraLlevar && !o1.paraLlevar ? true : o2.id < o1.id;
+        {
+            if (o2.paraLlevar && !o1.paraLlevar) return true;
+            else if (!o2.paraLlevar && o1.paraLlevar) return false;
+            else return o2.id < o1.id;
+        }
     }
 
     void swapi(int pos1, int pos2)
@@ -110,7 +110,7 @@ private:
 
     int flotar(int pos)
     {
-        while (pos > 1 && comparar(minHeap[pos / 2], minHeap[pos]))
+        while (pos >= 1 && comparar(minHeap[pos / 2], minHeap[pos]))
         {
             swapi(pos, pos / 2);
             pos = pos / 2;
@@ -172,11 +172,11 @@ private:
 
         if (comparar(padre, actual))
         {
-            flotar(posenHeap);
+            flotar(posenHeap); // Se ajusta el heap flotando
         }
         else
         {
-            hundir(posenHeap);
+            hundir(posenHeap); // O hundiendo
         }
     }
 
@@ -211,41 +211,40 @@ public:
     }
 
     void add(int id, int prioridad, bool lleva, string item)
-{
-    if (topeHeap >= tamano)
     {
-        cout << "No hay espacio para más pedidos" << endl;
-        return;
+        if (topeHeap >= tamano)
+        {
+            cout << "No hay espacio para más pedidos" << endl;
+            return;
+        }
+
+        int pos = fhash(id);
+        orden o;
+        o.id = id;
+        o.items = item;
+        o.paraLlevar = lleva;
+        o.prioridad = prioridad;
+
+        // Revisar si la posición en el heap es la esperada.
+        int posHeap = insertarEnHeap(o);
+
+        // Depurar el valor de posHeap para verificar que sea correcto.
+        // cout << "Insertando pedido con id " << id << " en la posición " << posHeap << " del heap." << endl;
+
+        insertarInicio(tablaHash[pos], id, posHeap);
     }
 
-    int pos = fhash(id);
-    orden o;
-    o.id = id;
-    o.items = item;
-    o.paraLlevar = lleva;
-    o.prioridad = prioridad;
-    
-    // Revisar si la posición en el heap es la esperada.
-    int posHeap = insertarEnHeap(o);
-    
-    // Depurar el valor de posHeap para verificar que sea correcto.
-    //cout << "Insertando pedido con id " << id << " en la posición " << posHeap << " del heap." << endl;
-
-    insertarInicio(tablaHash[pos], id, posHeap);
-}
-
-
     void remove(int id)
-{
-    int pos = fhash(id);
+    {
+        int pos = fhash(id);
 
-    // Depurar la eliminación del heap
-   // cout << "Eliminando pedido con id " << id << endl;
-    eliminarEnHeap(id);
+        // Depurar la eliminación del heap
+        // cout << "Eliminando pedido con id " << id << endl;
+        eliminarEnHeap(id);
 
-    // Revisar si efectivamente se elimina de la tabla hash
-    eliminar(tablaHash[pos], id);
-}
+        // Revisar si efectivamente se elimina de la tabla hash
+        eliminar(tablaHash[pos], id);
+    }
 
     void toggle(int id)
     {
