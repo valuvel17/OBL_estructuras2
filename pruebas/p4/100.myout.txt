@@ -1,0 +1,254 @@
+Insertando pedido con id 1 en la posición 1 del heap.
+Insertando pedido con id 2 en la posición 1 del heap.
+Insertando pedido con id 3 en la posición 1 del heap.
+Insertando pedido con id 4 en la posición 2 del heap.
+Insertando pedido con id 5 en la posición 5 del heap.
+Insertando pedido con id 6 en la posición 6 del heap.
+Eliminando pedido con id 4
+Insertando pedido con id 7 en la posición 6 del heap.
+Insertando pedido con id 8 en la posición 7 del heap.
+Eliminando pedido con id 5
+Insertando pedido con id 9 en la posición 7 del heap.
+Insertando pedido con id 10 en la posición 8 del heap.
+Eliminando pedido con id 2
+Eliminando pedido con id 3
+Insertando pedido con id 11 en la posición 1 del heap.
+Insertando pedido con id 12 en la posición 2 del heap.
+Insertando pedido con id 13 en la posición 9 del heap.
+Insertando pedido con id 14 en la posición 5 del heap.
+Insertando pedido con id 15 en la posición 2 del heap.
+Insertando pedido con id 16 en la posición 6 del heap.
+Insertando pedido con id 17 en la posición 6 del heap.
+Insertando pedido con id 18 en la posición 14 del heap.
+Insertando pedido con id 19 en la posición 15 del heap.
+Insertando pedido con id 20 en la posición 4 del heap.
+Insertando pedido con id 21 en la posición 8 del heap.
+Insertando pedido con id 22 en la posición 18 del heap.
+Eliminando pedido con id 1
+Insertando pedido con id 23 en la posición 9 del heap.
+Insertando pedido con id 24 en la posición 9 del heap.
+Insertando pedido con id 25 en la posición 10 del heap.
+Insertando pedido con id 26 en la posición 21 del heap.
+Eliminando pedido con id 25
+Eliminando pedido con id 19
+Eliminando pedido con id 23
+Eliminando pedido con id 16
+Eliminando pedido con id 6
+Eliminando pedido con id 24
+Insertando pedido con id 27 en la posición 16 del heap.
+Insertando pedido con id 28 en la posición 8 del heap.
+Insertando pedido con id 29 en la posición 9 del heap.
+Insertando pedido con id 30 en la posición 9 del heap.
+Eliminando pedido con id 26
+Eliminando pedido con id 14
+Eliminando pedido con id 30
+Eliminando pedido con id 27
+Insertando pedido con id 31 en la posición 16 del heap.
+Insertando pedido con id 32 en la posición 17 del heap.
+Insertando pedido con id 33 en la posición 4 del heap.
+Insertando pedido con id 34 en la posición 19 del heap.
+Eliminando pedido con id 15
+Insertando pedido con id 35 en la posición 19 del heap.
+Insertando pedido con id 36 en la posición 10 del heap.
+Insertando pedido con id 37 en la posición 21 del heap.
+Insertando pedido con id 38 en la posición 11 del heap.
+Insertando pedido con id 39 en la posición 23 del heap.
+Eliminando pedido con id 7
+Insertando pedido con id 40 en la posición 23 del heap.
+Insertando pedido con id 41 en la posición 6 del heap.
+Eliminando pedido con id 22
+Eliminando pedido con id 37
+Insertando pedido con id 42 en la posición 5 del heap.
+Insertando pedido con id 43 en la posición 12 del heap.
+Eliminando pedido con id 42
+Insertando pedido con id 44 en la posición 24 del heap.
+Insertando pedido con id 45 en la posición 25 del heap.
+Insertando pedido con id 46 en la posición 26 del heap.
+Insertando pedido con id 47 en la posición 13 del heap.
+Insertando pedido con id 48 en la posición 28 del heap.
+Insertando pedido con id 49 en la posición 14 del heap.
+Eliminando pedido con id 38
+Insertando pedido con id 50 en la posición 3 del heap.
+Eliminando pedido con id 46
+Eliminando pedido con id 18
+Insertando pedido con id 51 en la posición 28 del heap.
+Insertando pedido con id 52 en la posición 29 del heap.
+Insertando pedido con id 53 en la posición 30 del heap.
+Insertando pedido con id 54 en la posición 7 del heap.
+Insertando pedido con id 55 en la posición 32 del heap.
+Eliminando pedido con id 45
+Insertando pedido con id 56 en la posición 32 del heap.
+Eliminando pedido con id 34
+Insertando pedido con id 57 en la posición 32 del heap.
+Eliminando pedido con id 10
+Insertando pedido con id 58 en la posición 32 del heap.
+Eliminando pedido con id 52
+Insertando pedido con id 59 en la posición 32 del heap.
+Insertando pedido con id 60 en la posición 33 del heap.
+Eliminando pedido con id 53
+Eliminando pedido con id 12
+Insertando pedido con id 61 en la posición 32 del heap.
+Insertando pedido con id 62 en la posición 33 del heap.
+Insertando pedido con id 63 en la posición 17 del heap.
+Eliminando pedido con id 56
+Insertando pedido con id 64 en la posición 34 del heap.
+Insertando pedido con id 65 en la posición 35 del heap.
+Insertando pedido con id 66 en la posición 36 del heap.
+Eliminando pedido con id 43
+Insertando pedido con id 67 en la posición 36 del heap.
+Eliminando pedido con id 58
+Eliminando pedido con id 44
+Insertando pedido con id 68 en la posición 17 del heap.
+Eliminando pedido con id 8
+Insertando pedido con id 69 en la posición 35 del heap.
+Eliminando pedido con id 13
+Insertando pedido con id 70 en la posición 35 del heap.
+Eliminando pedido con id 28
+Eliminando pedido con id 40
+Eliminando pedido con id 33
+Insertando pedido con id 71 en la posición 4 del heap.
+Insertando pedido con id 72 en la posición 17 del heap.
+Insertando pedido con id 73 en la posición 35 del heap.
+Insertando pedido con id 74 en la posición 36 del heap.
+Eliminando pedido con id 55
+Insertando pedido con id 75 en la posición 36 del heap.
+Insertando pedido con id 76 en la posición 18 del heap.
+Insertando pedido con id 77 en la posición 38 del heap.
+Insertando pedido con id 78 en la posición 39 del heap.
+Eliminando pedido con id 75
+Insertando pedido con id 79 en la posición 19 del heap.
+Insertando pedido con id 80 en la posición 40 del heap.
+Insertando pedido con id 81 en la posición 5 del heap.
+Insertando pedido con id 82 en la posición 42 del heap.
+Insertando pedido con id 83 en la posición 43 del heap.
+Insertando pedido con id 84 en la posición 22 del heap.
+Insertando pedido con id 85 en la posición 11 del heap.
+Insertando pedido con id 86 en la posición 46 del heap.
+Insertando pedido con id 87 en la posición 23 del heap.
+Insertando pedido con id 88 en la posición 24 del heap.
+Eliminando pedido con id 78
+Insertando pedido con id 89 en la posición 48 del heap.
+Eliminando pedido con id 72
+Eliminando pedido con id 85
+Insertando pedido con id 90 en la posición 47 del heap.
+Insertando pedido con id 91 en la posición 12 del heap.
+Insertando pedido con id 92 en la posición 49 del heap.
+Insertando pedido con id 93 en la posición 50 del heap.
+Eliminando pedido con id 66
+Eliminando pedido con id 90
+Insertando pedido con id 94 en la posición 49 del heap.
+Insertando pedido con id 95 en la posición 50 del heap.
+Insertando pedido con id 96 en la posición 51 del heap.
+Insertando pedido con id 97 en la posición 26 del heap.
+Insertando pedido con id 98 en la posición 53 del heap.
+Insertando pedido con id 99 en la posición 27 del heap.
+Eliminando pedido con id 11
+Insertando pedido con id 100 en la posición 13 del heap.
+Eliminando pedido con id 20
+20 0 true ORTNuggets_ORTNuggets
+Eliminando pedido con id 50
+50 0 false CajitaEstudiosa_BigORT_EggORTMuffin_ORTastySignture
+Eliminando pedido con id 54
+54 0 false ORTastySignture_BigORT_ORTNuggets_CajitaEstudiosa
+Eliminando pedido con id 69
+69 0 false BigORT
+Eliminando pedido con id 71
+71 0 true EggORTMuffin_ORTastySignture_ORTFlurryDeORTeos_ORTastySignture
+Eliminando pedido con id 68
+68 0 false BigORT_ORTastySignture_ORTNuggets_BigORT_ORTNuggets_CajitaEstudiosa
+Eliminando pedido con id 81
+81 0 false BigORT_ORTNuggets_ORTastySignture_ORTNuggets_ORTastySignture
+Eliminando pedido con id 100
+100 0 false CajitaEstudiosa_EggORTMuffin
+Eliminando pedido con id 17
+17 100 false ORTNuggets
+Eliminando pedido con id 21
+21 100 true EggORTMuffin_BigORT_CajitaEstudiosa_ORTastySignture_CajitaEstudiosa_CajitaEstudiosa
+Eliminando pedido con id 29
+29 100 false ORTastySignture_ORTFlurryDeORTeos_BigORT_ORTastySignture
+Eliminando pedido con id 49
+49 100 false BigORT_ORTNuggets
+Eliminando pedido con id 57
+57 100 false ORTastySignture_ORTFlurryDeORTeos
+Eliminando pedido con id 64
+64 100 true EggORTMuffin_BigORT_ORTastySignture_BigORT_CajitaEstudiosa_BigORT
+Eliminando pedido con id 70
+70 100 true EggORTMuffin_ORTNuggets_BigORT_EggORTMuffin_ORTastySignture_ORTastySignture
+Eliminando pedido con id 83
+83 100 true ORTastySignture_ORTastySignture_ORTFlurryDeORTeos_ORTNuggets_EggORTMuffin_CajitaEstudiosa
+Eliminando pedido con id 31
+31 100 false EggORTMuffin_BigORT
+Eliminando pedido con id 61
+61 100 false ORTNuggets_ORTastySignture_BigORT
+Eliminando pedido con id 63
+63 100 false CajitaEstudiosa_ORTFlurryDeORTeos_CajitaEstudiosa_EggORTMuffin_CajitaEstudiosa
+Eliminando pedido con id 76
+76 100 false EggORTMuffin
+Eliminando pedido con id 79
+79 100 false EggORTMuffin_EggORTMuffin
+Eliminando pedido con id 97
+97 100 false BigORT_ORTastySignture_ORTFlurryDeORTeos_EggORTMuffin
+Eliminando pedido con id 99
+99 100 false ORTFlurryDeORTeos
+Eliminando pedido con id 32
+32 200 true ORTFlurryDeORTeos_ORTastySignture_ORTastySignture_ORTFlurryDeORTeos_ORTastySignture_EggORTMuffin
+Eliminando pedido con id 35
+35 200 true BigORT_BigORT_CajitaEstudiosa
+Eliminando pedido con id 36
+36 200 false EggORTMuffin_BigORT_EggORTMuffin_CajitaEstudiosa
+Eliminando pedido con id 41
+41 200 false BigORT_ORTFlurryDeORTeos_ORTNuggets_ORTNuggets_EggORTMuffin
+Eliminando pedido con id 47
+47 200 false BigORT_ORTastySignture_EggORTMuffin_CajitaEstudiosa_BigORT
+Eliminando pedido con id 91
+91 200 true EggORTMuffin_ORTastySignture_BigORT_ORTNuggets_BigORT
+Eliminando pedido con id 59
+59 200 false BigORT_EggORTMuffin_ORTFlurryDeORTeos_CajitaEstudiosa
+Eliminando pedido con id 73
+73 200 false EggORTMuffin_ORTNuggets
+Eliminando pedido con id 74
+74 200 false ORTastySignture
+Eliminando pedido con id 82
+82 200 false BigORT_BigORT_ORTastySignture_ORTFlurryDeORTeos_EggORTMuffin
+Eliminando pedido con id 87
+87 200 false ORTNuggets_ORTFlurryDeORTeos_EggORTMuffin_BigORT_BigORT
+Eliminando pedido con id 88
+88 200 false ORTastySignture_BigORT_ORTNuggets
+Eliminando pedido con id 93
+93 200 false CajitaEstudiosa_ORTNuggets
+Eliminando pedido con id 9
+9 300 true ORTFlurryDeORTeos
+Eliminando pedido con id 48
+48 300 false BigORT_ORTFlurryDeORTeos_ORTFlurryDeORTeos
+Eliminando pedido con id 60
+60 300 false BigORT_EggORTMuffin
+Eliminando pedido con id 77
+77 300 true ORTNuggets_CajitaEstudiosa_EggORTMuffin_CajitaEstudiosa_ORTNuggets
+Eliminando pedido con id 39
+39 300 false ORTastySignture_BigORT_ORTNuggets_ORTastySignture
+Eliminando pedido con id 62
+62 300 false CajitaEstudiosa_ORTFlurryDeORTeos_BigORT_BigORT_CajitaEstudiosa_EggORTMuffin
+Eliminando pedido con id 65
+65 300 false CajitaEstudiosa
+Eliminando pedido con id 51
+51 300 false CajitaEstudiosa
+Eliminando pedido con id 67
+67 300 false BigORT_ORTFlurryDeORTeos_ORTFlurryDeORTeos_CajitaEstudiosa
+Eliminando pedido con id 80
+80 300 false ORTFlurryDeORTeos_ORTFlurryDeORTeos_CajitaEstudiosa_CajitaEstudiosa_ORTastySignture_ORTFlurryDeORTeos
+Eliminando pedido con id 84
+84 300 true ORTNuggets_ORTFlurryDeORTeos_ORTastySignture_EggORTMuffin_ORTNuggets
+Eliminando pedido con id 86
+86 300 false ORTFlurryDeORTeos
+Eliminando pedido con id 89
+89 300 false ORTNuggets_BigORT_BigORT_BigORT_CajitaEstudiosa
+Eliminando pedido con id 92
+92 300 false CajitaEstudiosa_BigORT
+Eliminando pedido con id 94
+94 300 false ORTNuggets_EggORTMuffin_EggORTMuffin_BigORT_EggORTMuffin_ORTFlurryDeORTeos
+Eliminando pedido con id 95
+95 300 false ORTastySignture_EggORTMuffin_ORTastySignture_EggORTMuffin_BigORT_ORTNuggets
+Eliminando pedido con id 96
+96 300 false ORTFlurryDeORTeos_CajitaEstudiosa_ORTFlurryDeORTeos_BigORT_EggORTMuffin_EggORTMuffin
+Eliminando pedido con id 98
+98 300 false CajitaEstudiosa

@@ -7,7 +7,6 @@ using namespace std;
 class Pedidos
 {
 private:
-    // Estructuras privadas
     struct orden
     {
         int prioridad;
@@ -22,12 +21,13 @@ private:
         nodo *sig;
     };
     typedef nodo *Lista;
-    // Atributos Privados
+
     Lista *tablaHash;
     orden *minHeap;
     int tamano;
-    int topeHeap; // primeroLibre;
-    // Funciones de estructuras
+    int topeHeap;
+
+    // Funciones auxiliares privadas
     int fhash(int id)
     {
         return abs(id * 17) % tamano;
@@ -67,44 +67,24 @@ private:
         }
     }
 
-    // Funciones Privadas
-
-    // Da true si el segundo es más prioritario
     bool comparar(orden o1, orden o2)
     {
         if (o2.prioridad < o1.prioridad)
-        {
             return true;
-        }
         else if (o2.prioridad > o1.prioridad)
-        {
             return false;
-        }
         else
-        {
-            if (o2.paraLlevar && !o1.paraLlevar)
-            {
-                return true;
-            }
-            else if (!o2.paraLlevar && o1.paraLlevar)
-            {
-                return false;
-            }
-            else
-            {
-                return o2.id < o1.id;
-            }
-        }
+            return o2.paraLlevar && !o1.paraLlevar ? true : o2.id < o1.id;
     }
 
     void swapi(int pos1, int pos2)
     {
         orden o1 = minHeap[pos1];
         orden o2 = minHeap[pos2];
-
         minHeap[pos1] = o2;
         minHeap[pos2] = o1;
 
+        // Actualizar las posiciones en la tabla hash
         int poshash = fhash(o1.id);
         Lista aux = tablaHash[poshash];
         while (aux)
@@ -130,7 +110,7 @@ private:
 
     int flotar(int pos)
     {
-        while (pos >= 1 && comparar(minHeap[pos / 2], minHeap[pos]))
+        while (pos > 1 && comparar(minHeap[pos / 2], minHeap[pos]))
         {
             swapi(pos, pos / 2);
             pos = pos / 2;
@@ -143,10 +123,13 @@ private:
         int posIzq = 2 * pos;
         int posDer = 2 * pos + 1;
         int menor = pos;
+
         if (posIzq < topeHeap && comparar(minHeap[menor], minHeap[posIzq]))
             menor = posIzq;
+
         if (posDer < topeHeap && comparar(minHeap[menor], minHeap[posDer]))
             menor = posDer;
+
         if (menor != pos)
         {
             swapi(pos, menor);
@@ -175,25 +158,29 @@ private:
             }
             bucket = bucket->sig;
         }
-        swapi(posenHeap, topeHeap - 1);
-        topeHeap--;
+
+        if (posenHeap == -1)
+        {
+            // No se encontró el pedido
+            return;
+        }
+
+        swapi(posenHeap, topeHeap - 1); // Intercambiar con el último
+        topeHeap--;                     // Reducir tamaño del heap
         orden padre = minHeap[posenHeap / 2];
         orden actual = minHeap[posenHeap];
-        orden hijoIzq = minHeap[posenHeap * 2];
-        orden hijoDer = minHeap[posenHeap * 2 + 1];
 
         if (comparar(padre, actual))
         {
             flotar(posenHeap);
         }
-        else if (comparar(actual, hijoIzq) || comparar(actual, hijoDer))
+        else
         {
             hundir(posenHeap);
         }
     }
 
 public:
-    // Constructores y destructores
     Pedidos(int size)
     {
         tamano = size + 1;
@@ -205,10 +192,7 @@ public:
         minHeap = new orden[tamano];
         for (int i = 0; i < tamano; i++)
         {
-            minHeap[i].id = 0;
-            minHeap[i].items = "";
-            minHeap[i].paraLlevar = false;
-            minHeap[i].prioridad = 0;
+            minHeap[i] = {0, false, 0, ""}; // Inicializar correctamente
         }
         topeHeap = 1;
     }
@@ -226,36 +210,42 @@ public:
         delete[] minHeap;
     }
 
-    // Funciones públicas con cout para depuración
-
     void add(int id, int prioridad, bool lleva, string item)
+{
+    if (topeHeap >= tamano)
     {
-        if (topeHeap >= tamano)
-        {
-            cout << "No hay espacio para más pedidos" << endl;
-            return;
-        }
-
-        int pos = fhash(id);
-        orden o;
-        o.id = id;
-        o.items = item;
-        o.paraLlevar = lleva;
-        o.prioridad = prioridad;
-        int posHeap = insertarEnHeap(o);
-        insertarInicio(tablaHash[pos], id, posHeap);
-
-        cout << "Añadido pedido ID: " << id << " con prioridad: " << prioridad << ". Tope actual del heap: " << topeHeap << endl;
+        cout << "No hay espacio para más pedidos" << endl;
+        return;
     }
+
+    int pos = fhash(id);
+    orden o;
+    o.id = id;
+    o.items = item;
+    o.paraLlevar = lleva;
+    o.prioridad = prioridad;
+    
+    // Revisar si la posición en el heap es la esperada.
+    int posHeap = insertarEnHeap(o);
+    
+    // Depurar el valor de posHeap para verificar que sea correcto.
+    //cout << "Insertando pedido con id " << id << " en la posición " << posHeap << " del heap." << endl;
+
+    insertarInicio(tablaHash[pos], id, posHeap);
+}
+
 
     void remove(int id)
-    {
-        int pos = fhash(id);
-        eliminarEnHeap(id);
-        eliminar(tablaHash[pos], id);
+{
+    int pos = fhash(id);
 
-        cout << "Removido pedido ID: " << id << ". Tope actual del heap: " << topeHeap << endl;
-    }
+    // Depurar la eliminación del heap
+   // cout << "Eliminando pedido con id " << id << endl;
+    eliminarEnHeap(id);
+
+    // Revisar si efectivamente se elimina de la tabla hash
+    eliminar(tablaHash[pos], id);
+}
 
     void toggle(int id)
     {
@@ -266,13 +256,11 @@ public:
             if (aux->id == id)
             {
                 minHeap[aux->posEnHeap].paraLlevar = !minHeap[aux->posEnHeap].paraLlevar;
-                cout << "Cambiado paraLlevar de pedido ID: " << id << ". Nuevo valor: " << minHeap[aux->posEnHeap].paraLlevar << endl;
             }
             aux = aux->sig;
         }
     }
 
-    // Elimina el más prioritario y lo devuelve
     string peek()
     {
         if (esVacia())
@@ -281,13 +269,16 @@ public:
             return "";
         }
 
-        string ret = to_string(minHeap[1].id) + " " + to_string(minHeap[1].prioridad) + " " + (minHeap[1].paraLlevar ? "true" : "false") + " " + minHeap[1].items;
-
-        // Elimina el elemento más prioritario
+        string ret = "";
+        if (minHeap[1].paraLlevar)
+        {
+            ret = to_string(minHeap[1].id) + " " + to_string(minHeap[1].prioridad) + " true " + minHeap[1].items;
+        }
+        else
+        {
+            ret = to_string(minHeap[1].id) + " " + to_string(minHeap[1].prioridad) + " false " + minHeap[1].items;
+        }
         remove(minHeap[1].id);
-
-        cout << "Peek realizado. Pedido más prioritario ID: " << minHeap[1].id << " eliminado." << endl;
-
         return ret;
     }
 
