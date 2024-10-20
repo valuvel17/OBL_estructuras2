@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include "..\funciones\enteros.h"
 
 using namespace std;
 
@@ -67,13 +66,18 @@ private:
 
     bool comparar(orden o1, orden o2)
     {
-        if (o2.prioridad < o1.prioridad) return true;
-        else if (o2.prioridad > o1.prioridad) return false;
+        if (o2.prioridad < o1.prioridad)
+            return true;
+        else if (o2.prioridad > o1.prioridad)
+            return false;
         else
         {
-            if (o2.paraLlevar && !o1.paraLlevar) return true;
-            else if (!o2.paraLlevar && o1.paraLlevar) return false;
-            else return o2.id < o1.id;
+            if (o2.paraLlevar && !o1.paraLlevar)
+                return true;
+            else if (!o2.paraLlevar && o1.paraLlevar)
+                return false;
+            else
+                return o2.id < o1.id;
         }
     }
 
@@ -110,7 +114,7 @@ private:
 
     int flotar(int pos)
     {
-        while (pos >= 1 && comparar(minHeap[pos / 2], minHeap[pos]))
+        while (pos > 1 && comparar(minHeap[pos / 2], minHeap[pos]))
         {
             swapi(pos, pos / 2);
             pos = pos / 2;
@@ -133,8 +137,10 @@ private:
         if (menor != pos)
         {
             swapi(pos, menor);
-            hundir(menor);
+            return hundir(menor);
         }
+
+        return pos;
     }
 
     int insertarEnHeap(orden o)
@@ -147,37 +153,23 @@ private:
 
     void eliminarEnHeap(int id)
     {
-        int pos = fhash(id);
-        int posenHeap = -1;
-        Lista bucket = tablaHash[pos];
-        while (bucket && posenHeap == -1)
+        int posHash = fhash(id);
+        int posEnHeap;
+        Lista aux = tablaHash[posHash];
+        while (aux)
         {
-            if (bucket->id == id)
+            if (aux->id == id)
             {
-                posenHeap = bucket->posEnHeap;
+                posEnHeap = aux->posEnHeap;
             }
-            bucket = bucket->sig;
+            aux = aux->sig;
         }
-
-        if (posenHeap == -1)
-        {
-            // No se encontró el pedido
-            return;
-        }
-
-        swapi(posenHeap, topeHeap - 1); // Intercambiar con el último
+        
+        swapi(posEnHeap, topeHeap - 1); // Intercambiar con el último
         topeHeap--;                     // Reducir tamaño del heap
-        orden padre = minHeap[posenHeap / 2];
-        orden actual = minHeap[posenHeap];
 
-        if (comparar(padre, actual))
-        {
-            flotar(posenHeap); // Se ajusta el heap flotando
-        }
-        else
-        {
-            hundir(posenHeap); // O hundiendo
-        }
+        flotar(posEnHeap); // Ajustar el heap flotando
+        hundir(posEnHeap); // O hundiendo
     }
 
 public:
@@ -225,24 +217,15 @@ public:
         o.paraLlevar = lleva;
         o.prioridad = prioridad;
 
-        // Revisar si la posición en el heap es la esperada.
+        // Insertar en el heap y obtener la posición en el heap
         int posHeap = insertarEnHeap(o);
-
-        // Depurar el valor de posHeap para verificar que sea correcto.
-        // cout << "Insertando pedido con id " << id << " en la posición " << posHeap << " del heap." << endl;
-
         insertarInicio(tablaHash[pos], id, posHeap);
     }
 
     void remove(int id)
     {
         int pos = fhash(id);
-
-        // Depurar la eliminación del heap
-        // cout << "Eliminando pedido con id " << id << endl;
         eliminarEnHeap(id);
-
-        // Revisar si efectivamente se elimina de la tabla hash
         eliminar(tablaHash[pos], id);
     }
 
@@ -285,4 +268,5 @@ public:
     {
         return topeHeap <= 1;
     }
+
 };
