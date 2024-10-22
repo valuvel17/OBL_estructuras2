@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "tarea-ejercicio4",
+      "appliesTo": "ejercicio4.cpp",
+      "type": "launch"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+Ciudad inicial: 6
+llega a resolver misiones
+cantidadMisiones: 5
+cantidadCiudades: 6
+se hizo degree 
+0es indegree 0
+1es indegree 0
+3es indegree 0
+while misiones nro :0
+sehizo dijkstra
+se desencolo
+0
+se obtuvo Mision

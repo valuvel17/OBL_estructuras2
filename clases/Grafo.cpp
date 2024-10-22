@@ -1,13 +1,13 @@
 #include <iostream>
 #include <string>
-using namespace std;
+#include "../funciones/definiciones.h"
 
+using namespace std;
 
 template <class V>
 
 class Grafo
 {
-
 private:
     Arista **vertices;
     int cantidadV;
@@ -22,7 +22,7 @@ public:
         cantidadV = cantV;
         dirigido = esDirigido;
         ponderado = esPonderado;
-        infoVertices = new V[cantV + 1]();
+        infoVertices = new V[cantV + 1];
     }
 
     ~Grafo()
@@ -102,5 +102,4 @@ public:
     {
         return cantidadV;
     }
-
 };

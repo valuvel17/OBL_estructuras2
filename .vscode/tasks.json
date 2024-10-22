@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Compilar con g++",
+        "type": "shell",
+        "command": "g++",
+        "args": [
+          "-g",  // Agrega información de depuración
+          "${workspaceFolder}/ejercicio4.cpp",
+          "-o", "${workspaceFolder}/ejercicio4.exe"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": ["$gcc"],
+        "detail": "Compilación usando g++ de MinGW"
+      }
+    ]
+  }
+  

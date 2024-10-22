@@ -26,12 +26,15 @@ private:
     int tamano;
     int topeHeap;
 
-    // Funciones auxiliares privadas
+    // PRE: recibe una id
+    // POS: devuelve el bucket de la lista donde se encuentra la posEnHash de esa id
     int fhash(int id)
     {
         return abs(id * 17) % tamano;
     }
 
+    // PRE: recibe una lista, un id y una pos
+    // POS: inserta al comienzo de la lista un nodo con la id y la posEnHeap de la id
     void insertarInicio(Lista &l, int id, int pos)
     {
         Lista nuevo = new nodo;
@@ -41,6 +44,8 @@ private:
         l = nuevo;
     }
 
+    // PRE: recibe una lista
+    // POS: elimina el primer elemento de la lista
     void eliminarInicio(Lista &l)
     {
         Lista aBorrar = l;
@@ -49,6 +54,8 @@ private:
         aBorrar = NULL;
     }
 
+    // PRE: recibe una lista
+    // POS: elimina el nodo que contenga esa id en la lista
     void eliminar(Lista &l, int id)
     {
         if (!l)
@@ -64,6 +71,8 @@ private:
             eliminar(l->sig, id);
     }
 
+    // PRE: recibe 2 ordenes
+    // POS: retorna true si el el o2 es mas prioritario
     bool comparar(orden o1, orden o2)
     {
         if (o2.prioridad < o1.prioridad)
@@ -81,6 +90,8 @@ private:
         }
     }
 
+    // PRE: recibe 2 posiciones
+    // POS: intercambia sus valores en el heap y sus respectivas posiciones en la tabla de hash
     void swapi(int pos1, int pos2)
     {
         orden auxOrden = minHeap[pos1];
@@ -111,6 +122,9 @@ private:
         }
     }
 
+
+    // PRE: recibe una posicion en el heap
+    // POS: flota el elemento en esa posicion y retorna su nueva posicion
     int flotar(int pos)
     {
         while (pos > 1 && comparar(minHeap[pos / 2], minHeap[pos]))
@@ -121,25 +135,25 @@ private:
         return pos;
     }
 
+    // PRE: recibe una posicion en el heap
+    // POS: hunde el elemento de esa posiscion en el heap
     void hundir(int pos)
     {
         int posIzq = 2 * pos;
         int posDer = (2 * pos) + 1;
         int menor = pos;
 
-        if (posIzq < topeHeap && comparar(minHeap[menor], minHeap[posIzq]))
-            menor = posIzq;
-
-        if (posDer < topeHeap && comparar(minHeap[menor], minHeap[posDer]))
-            menor = posDer;
-
+        if (posIzq < topeHeap && comparar(minHeap[menor], minHeap[posIzq])) menor = posIzq;
+        if (posDer < topeHeap && comparar(minHeap[menor], minHeap[posDer])) menor = posDer;
         if (menor != pos)
         {
             swapi(pos, menor);
-            return hundir(menor);
+            hundir(menor);
         }
     }
 
+    // PRE: recibe una orden
+    // POS: inserta la orden en el heap
     int insertarEnHeap(orden o)
     {
         minHeap[topeHeap] = o;
@@ -148,6 +162,8 @@ private:
         return posHeap;
     }
 
+    // PRE: recibe un id
+    // POS: elimina esa orden del heap y su respectivo valor en la tabla de hash
     void eliminarEnHeap(int id)
     {
         int posHash = fhash(id);
@@ -169,6 +185,8 @@ private:
     }
 
 public:
+
+    // Constructor
     Pedidos(int size)
     {
         tamano = size + 1;
@@ -184,7 +202,7 @@ public:
         }
         topeHeap = 1;
     }
-
+    // Destructor
     ~Pedidos()
     {
         for (int i = 0; i < tamano; i++)
@@ -198,6 +216,8 @@ public:
         delete[] minHeap;
     }
 
+    // PRE: recibe todos los datos de un pedido
+    // POS: lo agrega al heap y guarda su posicion en una tabla de hash
     void add(int id, int prioridad, bool lleva, string item)
     {
         if (topeHeap >= tamano)
@@ -218,6 +238,8 @@ public:
         insertarInicio(tablaHash[pos], id, posHeap);
     }
 
+    // PRE: recibe una id
+    // POS: lo elimina del heap y elimina su posicion en una tabla de hash
     void remove(int id)
     {
         int pos = fhash(id);
@@ -225,6 +247,8 @@ public:
         eliminar(tablaHash[pos], id);
     }
 
+    // PRE: recibe un id
+    // POS: cambia el valor del atributo lleva de la orden con esa id
     void toggle(int id)
     {
         int pos = fhash(id);
@@ -239,6 +263,8 @@ public:
         }
     }
 
+    // PRE: 
+    // POS: retorna un string con la informacion de la orden peek y la elimina
     string peek()
     {
         if (esVacia())
@@ -260,6 +286,8 @@ public:
         return ret;
     }
 
+    // PRE: 
+    // POS: retorna true si esta vacio el heap
     bool esVacia()
     {
         return topeHeap <= 1;
