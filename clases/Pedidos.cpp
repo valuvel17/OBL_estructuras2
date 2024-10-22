@@ -79,28 +79,27 @@ private:
 
     void swapi(int pos1, int pos2)
     {
-        orden o1 = minHeap[pos1];
-        orden o2 = minHeap[pos2];
-        minHeap[pos1] = o2;
-        minHeap[pos2] = o1;
+        orden auxOrden = minHeap[pos1];
+        minHeap[pos1] = minHeap[pos2];
+        minHeap[pos2] = auxOrden;
 
         // Actualizar las posiciones en la tabla hash
-        int poshash = fhash(o1.id);
+        int poshash = fhash(minHeap[pos2].id);
         Lista aux = tablaHash[poshash];
         while (aux)
         {
-            if (aux->id == o1.id)
+            if (aux->id == minHeap[pos2].id)
             {
                 aux->posEnHeap = pos2;
             }
             aux = aux->sig;
         }
 
-        poshash = fhash(o2.id);
+        poshash = fhash(minHeap[pos1].id);
         aux = tablaHash[poshash];
         while (aux)
         {
-            if (aux->id == o2.id)
+            if (aux->id == minHeap[pos1].id)
             {
                 aux->posEnHeap = pos1;
             }
@@ -110,7 +109,7 @@ private:
 
     int flotar(int pos)
     {
-        while (pos >= 1 && comparar(minHeap[pos / 2], minHeap[pos]))
+        while (pos > 1 && comparar(minHeap[pos / 2], minHeap[pos]))
         {
             swapi(pos, pos / 2);
             pos = pos / 2;
@@ -118,10 +117,10 @@ private:
         return pos;
     }
 
-    int hundir(int pos)
+    void hundir(int pos)
     {
         int posIzq = 2 * pos;
-        int posDer = 2 * pos + 1;
+        int posDer = (2 * pos) + 1;
         int menor = pos;
 
         if (posIzq < topeHeap && comparar(minHeap[menor], minHeap[posIzq]))
@@ -135,6 +134,7 @@ private:
             swapi(pos, menor);
             hundir(menor);
         }
+
     }
 
     int insertarEnHeap(orden o)
@@ -167,17 +167,9 @@ private:
 
         swapi(posenHeap, topeHeap - 1); // Intercambiar con el último
         topeHeap--;                     // Reducir tamaño del heap
-        orden padre = minHeap[posenHeap / 2];
-        orden actual = minHeap[posenHeap];
-
-        if (comparar(padre, actual))
-        {
-            flotar(posenHeap); // Se ajusta el heap flotando
-        }
-        else
-        {
-            hundir(posenHeap); // O hundiendo
-        }
+        // flotar(posenHeap); // Se ajusta el heap flotando   
+        hundir(posenHeap); // O hundiendo
+        
     }
 
 public:
