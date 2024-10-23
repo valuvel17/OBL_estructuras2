@@ -1,13 +1,8 @@
-Ciudad inicial: 6
-llega a resolver misiones
-cantidadMisiones: 5
-cantidadCiudades: 6
-se hizo degree 
-0es indegree 0
-1es indegree 0
-3es indegree 0
-while misiones nro :0
-sehizo dijkstra
-se desencolo
-0
-se obtuvo Mision
+Ciudad inicial: Punta_Del_Este
+Punta_Del_Este -> Montevideo -> Mision: Recuperar_llave - Montevideo - Tiempo de viaje: 10
+Montevideo -> New_York -> Mision: Desactivar_servidor - New_York - Tiempo de viaje: 350
+New_York -> Roma -> Mision: Obtener_informacion_confidencial - Roma - Tiempo de viaje: 500
+Roma -> New_York -> Tokio -> Mision: Extraer_codigo_fuente - Tokio - Tiempo de viaje: 1400
+Tokio -> New_York -> Roma -> Londres -> Mision: Desactivar_la_Entidad - Londres - Tiempo de viaje: 1700
+Misiones ejecutadas con exito.
+Tiempo total de viaje: 3960

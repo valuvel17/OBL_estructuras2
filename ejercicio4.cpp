@@ -11,7 +11,7 @@ int main()
     int cantidad_pedidos = 0;
     cin >> cantidad_pedidos;
     int cantidad_operaciones = 0;
-    cin >>  cantidad_operaciones;
+    cin >> cantidad_operaciones;
     Pedidos *nueva = new Pedidos(cantidad_pedidos);
     for (int i = 0; i < cantidad_operaciones; i++)
     {
@@ -30,7 +30,8 @@ int main()
             cin >> llevar;
             cin >> item;
             bool paraLlevar = false;
-            if(llevar == "true") paraLlevar = true;
+            if (llevar == "true")
+                paraLlevar = true;
             nueva->add(id, prioridad, paraLlevar, item);
         }
         break;
@@ -55,8 +56,9 @@ int main()
             break;
         }
     }
-    while(!nueva->esVacia()){
+    while (!nueva->esVacia())
+    {
         cout << nueva->peek() << endl;
-    }
+    } 
     return 0;
 }

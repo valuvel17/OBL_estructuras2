@@ -22,7 +22,7 @@ private:
     typedef nodo *Lista;
 
     Lista *tablaHash;
-    orden *minHeap;
+    orden **minHeap;
     int tamano;
     int topeHeap;
 
@@ -31,6 +31,50 @@ private:
     int fhash(int id)
     {
         return abs(id * 17) % tamano;
+    }
+
+    // PRE: se llama cuando la carga de la tabla hash es alta
+    // POS: redimensiona la tabla hash y redistribuye las entradas
+    void rehash()
+    {
+        // Guarda el tamaño actual y crea un nuevo tamaño
+        int nuevoTamano = tamano * 2;
+        Lista *nuevaTablaHash = new Lista[nuevoTamano];
+
+        // Inicializa la nueva tabla hash
+        for (int i = 0; i < nuevoTamano; i++)
+        {
+            nuevaTablaHash[i] = NULL;
+        }
+
+        // Redistribuir las entradas de la tabla hash original a la nueva tabla
+        for (int i = 0; i < tamano; i++)
+        {
+            Lista aux = tablaHash[i];
+            while (aux)
+            {
+                // Obtiene la posición en la nueva tabla hash
+                int nuevaPos = abs(aux->id * 17) % nuevoTamano;
+
+                // Inserta el nodo en la nueva tabla hash
+                insertarInicio(nuevaTablaHash[nuevaPos], aux->id, aux->posEnHeap);
+                aux = aux->sig; // Mueve al siguiente nodo
+            }
+        }
+
+        // Elimina la tabla hash anterior y actualiza el puntero
+        for (int i = 0; i < tamano; i++)
+        {
+            while (tablaHash[i])
+            {
+                eliminarInicio(tablaHash[i]);
+            }
+        }
+        delete[] tablaHash;
+
+        // Actualiza el puntero de la tabla hash y el tamaño
+        tablaHash = nuevaTablaHash;
+        tamano = nuevoTamano;
     }
 
     // PRE: recibe una lista, un id y una pos
@@ -72,49 +116,50 @@ private:
     }
 
     // PRE: recibe 2 ordenes
-    // POS: retorna true si el el o2 es mas prioritario
-    bool comparar(orden o1, orden o2)
+    // POS: retorna true si el o2 es más prioritario que o1
+    bool comparar(orden *o1, orden *o2)
     {
-        if (o2.prioridad < o1.prioridad)
+        // Primero se compara la prioridad
+        if (o2->prioridad < o1->prioridad)
             return true;
-        else if (o2.prioridad > o1.prioridad)
+        else if (o2->prioridad > o1->prioridad)
             return false;
-        else
-        {
-            if (o2.paraLlevar && !o1.paraLlevar)
-                return true;
-            else if (!o2.paraLlevar && o1.paraLlevar)
-                return false;
-            else
-                return o2.id < o1.id;
-        }
+
+        // Si las prioridades son iguales, se compara si es para llevar
+        if (o2->paraLlevar && !o1->paraLlevar)
+            return true;
+        else if (!o2->paraLlevar && o1->paraLlevar)
+            return false;
+
+        // Si ambas condiciones anteriores son iguales, compara por id
+        return o2->id < o1->id;
     }
 
     // PRE: recibe 2 posiciones
     // POS: intercambia sus valores en el heap y sus respectivas posiciones en la tabla de hash
     void swapi(int pos1, int pos2)
     {
-        orden auxOrden = minHeap[pos1];
+        orden *auxOrden = minHeap[pos1];
         minHeap[pos1] = minHeap[pos2];
         minHeap[pos2] = auxOrden;
 
         // Actualizar las posiciones en la tabla hash
-        int poshash = fhash(minHeap[pos2].id);
+        int poshash = fhash(minHeap[pos2]->id);
         Lista aux = tablaHash[poshash];
         while (aux)
         {
-            if (aux->id == minHeap[pos2].id)
+            if (aux->id == minHeap[pos2]->id)
             {
                 aux->posEnHeap = pos2;
             }
             aux = aux->sig;
         }
 
-        poshash = fhash(minHeap[pos1].id);
+        poshash = fhash(minHeap[pos1]->id);
         aux = tablaHash[poshash];
         while (aux)
         {
-            if (aux->id == minHeap[pos1].id)
+            if (aux->id == minHeap[pos1]->id)
             {
                 aux->posEnHeap = pos1;
             }
@@ -122,15 +167,22 @@ private:
         }
     }
 
-
     // PRE: recibe una posicion en el heap
     // POS: flota el elemento en esa posicion y retorna su nueva posicion
     int flotar(int pos)
     {
-        while (pos > 1 && comparar(minHeap[pos / 2], minHeap[pos]))
+        if (pos == 1)
+            return 1;
+        else
         {
-            swapi(pos, pos / 2);
-            pos = pos / 2;
+            int posPadre = pos / 2;
+            orden *valorPadre = minHeap[posPadre];
+            orden *valorActual = minHeap[pos];
+            if (comparar(valorPadre, valorActual))
+            {
+                swapi(posPadre, pos);
+                return flotar(posPadre);
+            }
         }
         return pos;
     }
@@ -143,8 +195,10 @@ private:
         int posDer = (2 * pos) + 1;
         int menor = pos;
 
-        if (posIzq < topeHeap && comparar(minHeap[menor], minHeap[posIzq])) menor = posIzq;
-        if (posDer < topeHeap && comparar(minHeap[menor], minHeap[posDer])) menor = posDer;
+        if (posIzq < topeHeap && comparar(minHeap[menor], minHeap[posIzq]))
+            menor = posIzq;
+        if (posDer < topeHeap && comparar(minHeap[menor], minHeap[posDer]))
+            menor = posDer;
         if (menor != pos)
         {
             swapi(pos, menor);
@@ -154,9 +208,12 @@ private:
 
     // PRE: recibe una orden
     // POS: inserta la orden en el heap
-    int insertarEnHeap(orden o)
+    int insertarEnHeap(int id, string item, bool lleva, int prioridad)
     {
-        minHeap[topeHeap] = o;
+        minHeap[topeHeap]->id = id;
+        minHeap[topeHeap]->items = item;
+        minHeap[topeHeap]->paraLlevar = lleva;
+        minHeap[topeHeap]->prioridad = prioridad;
         int posHeap = flotar(topeHeap);
         topeHeap++;
         return posHeap;
@@ -177,15 +234,14 @@ private:
             }
             aux = aux->sig;
         }
-        
+
         swapi(posEnHeap, topeHeap - 1); // Intercambiar con el último
-        topeHeap--;                     // Reducir tamaño del heap
-        // flotar(posenHeap); // Se ajusta el heap flotando   
-        hundir(posEnHeap); // O hundiendo
+        topeHeap--;                     // Reducir tamaño del heap (borrado logico)
+        flotar(posEnHeap);              // Se ajusta el heap flotando
+        hundir(posEnHeap);              // O hundiendo
     }
 
 public:
-
     // Constructor
     Pedidos(int size)
     {
@@ -195,10 +251,15 @@ public:
         {
             tablaHash[i] = NULL;
         }
-        minHeap = new orden[tamano];
+        minHeap = new orden *[tamano];
         for (int i = 0; i < tamano; i++)
         {
-            minHeap[i] = {0, false, 0, ""}; // Inicializar correctamente
+            orden *nueva = new orden;
+            nueva->id = 0;
+            nueva->items = "";
+            nueva->paraLlevar = false;
+            nueva->prioridad = 0;
+            minHeap[i] = nueva;
         }
         topeHeap = 1;
     }
@@ -220,6 +281,10 @@ public:
     // POS: lo agrega al heap y guarda su posicion en una tabla de hash
     void add(int id, int prioridad, bool lleva, string item)
     {
+        if (topeHeap >= tamano * 0.70)
+        {
+            rehash();
+        } 
         if (topeHeap >= tamano)
         {
             cout << "No hay espacio para más pedidos" << endl;
@@ -227,14 +292,8 @@ public:
         }
 
         int pos = fhash(id);
-        orden o;
-        o.id = id;
-        o.items = item;
-        o.paraLlevar = lleva;
-        o.prioridad = prioridad;
-
         // Insertar en el heap y obtener la posición en el heap
-        int posHeap = insertarEnHeap(o);
+        int posHeap = insertarEnHeap(id, item, lleva, prioridad);
         insertarInicio(tablaHash[pos], id, posHeap);
     }
 
@@ -257,13 +316,13 @@ public:
         {
             if (aux->id == id)
             {
-                minHeap[aux->posEnHeap].paraLlevar = !minHeap[aux->posEnHeap].paraLlevar;
+                minHeap[aux->posEnHeap]->paraLlevar = !minHeap[aux->posEnHeap]->paraLlevar;
             }
             aux = aux->sig;
         }
     }
 
-    // PRE: 
+    // PRE:
     // POS: retorna un string con la informacion de la orden peek y la elimina
     string peek()
     {
@@ -274,23 +333,22 @@ public:
         }
 
         string ret = "";
-        if (minHeap[1].paraLlevar)
+        if (minHeap[1]->paraLlevar)
         {
-            ret = to_string(minHeap[1].id) + " " + to_string(minHeap[1].prioridad) + " true " + minHeap[1].items;
+            ret = to_string(minHeap[1]->id) + " " + to_string(minHeap[1]->prioridad) + " true " + minHeap[1]->items;
         }
         else
         {
-            ret = to_string(minHeap[1].id) + " " + to_string(minHeap[1].prioridad) + " false " + minHeap[1].items;
+            ret = to_string(minHeap[1]->id) + " " + to_string(minHeap[1]->prioridad) + " false " + minHeap[1]->items;
         }
-        remove(minHeap[1].id);
+        remove(minHeap[1]->id);
         return ret;
     }
 
-    // PRE: 
+    // PRE:
     // POS: retorna true si esta vacio el heap
     bool esVacia()
     {
         return topeHeap <= 1;
     }
-
 };
