@@ -5,6 +5,7 @@
 #include <limits>
 #include "../clases/Grafo.cpp"
 #include "../clases/Cola.cpp"
+#include "../clases/MinHeap.cpp"
 #include "definiciones.h"
 using namespace std;
 
@@ -27,6 +28,8 @@ struct ciudad
     string nombre;
 };
 
+// PRE: Recibe una lista y un valor
+// POS: Inserta al inicio de la lista el nodo con ese valor
 void insertarInicio(int i, nodoLista *&l)
 {
     nodoLista *nuevo = new nodoLista;
@@ -34,6 +37,9 @@ void insertarInicio(int i, nodoLista *&l)
     nuevo->sig = l;
     l = nuevo;
 }
+
+// PRE: Recibe una lista no vacia
+// POS: Elimina el inicio y devuelve el valor que tenia
 int eliminarInicioYdevolver(nodoLista *&l)
 {
     int dato = l->pos;
@@ -44,6 +50,8 @@ int eliminarInicioYdevolver(nodoLista *&l)
     return dato;
 }
 
+// PRE: recibe el tamano del array
+// POS: inicializa un array de tamano x con todos sus valores valor intMax
 int *initCostos(int x)
 {
     int *ret = new int[x];
@@ -54,6 +62,8 @@ int *initCostos(int x)
     return ret;
 }
 
+// PRE: recibe el tamano del array
+// POS: inicializa un array de tamano x con todos sus valores valor -1
 int *initVengoDe(int x)
 {
     int *ret = new int[x];
@@ -64,29 +74,19 @@ int *initVengoDe(int x)
     return ret;
 }
 
-int verticeDesconocidoDeMenorCosto(Grafo<ciudad *> *c, int org, bool *visitados, int *costo)
-{
-    int ret = -1;
-    int peso = INT_MAX;
-
-    for (int i = 1; i <= c->cantidadVertices(); i++)
-    {
-        if (!visitados[i] && costo[i] < peso)
-        {
-            peso = costo[i];
-            ret = i;
-        }
-    }
-    return ret; // Retornamos el vértice con menor costo no visitado
-}
-
+/*--------------Algoritmo Dijkstra v2--------------*/
+// PRE: recibe un grafo de Ciudades, un origen y 2 array uno de costo y uno de vengoDe
+// POS: Devuelve en costo y vengoDe los costos mas baratos del origen a su indice y con vengoDe se reconstruye el camino
 void dijkstra(Grafo<ciudad *> *c, int org, int *&costo, int *&vengoDe)
 {
     bool *visitados = new bool[c->cantidadVertices() + 1]();
     costo[org] = 0;
-    for (int i = 1; i < c->cantidadVertices() + 1; i++)
+    MinHeap* cp = new MinHeap(c->cantidadVertices()+1);
+    cp->add(org,0);
+    while(!cp->estaVacio())
     {
-        int v = verticeDesconocidoDeMenorCosto(c, org, visitados, costo);
+        int v = cp->peak();
+        cp->remove();
         visitados[v] = true;
         Arista *ady = c->adyacentes(v);
         while (ady)
@@ -96,6 +96,7 @@ void dijkstra(Grafo<ciudad *> *c, int org, int *&costo, int *&vengoDe)
             {
                 costo[w] = costo[v] + ady->peso;
                 vengoDe[w] = v;
+                cp->add(w,costo[w]);
             }
             ady = ady->sig;
         }
@@ -104,6 +105,8 @@ void dijkstra(Grafo<ciudad *> *c, int org, int *&costo, int *&vengoDe)
     delete[] visitados;
 }
 
+// PRE: Recibe un grafo de misiones
+// POS: Devuelve un Array con los indices como contadores de la cantidad de aristas incidentes al vertice
 int *DegreeM(Grafo<mision *> *m)
 {
     int *ret = new int[m->cantidadVertices() + 1]();
@@ -118,26 +121,3 @@ int *DegreeM(Grafo<mision *> *m)
     }
     return ret;
 }
-
-
-
-// rresolver misiones p
-// indegree O(m + dep) de misiones
-// encolo los degree 0
-// while quedanMisiones
-// hacemos dijkstra (C+E)*log C
-// int indice ciudadDeMenorCosto
-// int misionAsociada
-// int CantCiudades
-// while cantidaddeCiudadesProcesada < C (orden C)  --> (C+E)logC +C == c=e log c //lo procesamos la cantidad de ciudades maximo
-//  de la cola desencolasde degree 0
-// me fijo la ciudad de la mision
-// si costo[ciudad de el desencolado] < costo[ciudadMenorCosto]
-// enccolo misionAsocida
-// misionAsociada
-// ciudadMenorCosto  =  ciudad de el desencolado
-// termino el while y supuestamente tengo la ciudad de menor costo guardada y la mision
-// getVertice(ciudadMenorCosto) getVertice(misionAsociada)
-// imprimo toda la info :)
-
-// misiones --

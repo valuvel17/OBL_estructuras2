@@ -20,20 +20,6 @@ private:
     int espacio; // no necesariamente tamano de array (ignoramos el 0 en nuestra implementacion)
     // funciones privadas
 
-    // PRE:
-    // POS: Retorna si esta Lleno el heap
-    bool estaLleno()
-    {
-        return tope >= espacio;
-    }
-
-    // PRE:
-    // POS: Retorna si esta vacio el heap
-    bool estaVacio()
-    {
-        return tope == 1;
-    }
-
     // PRE: Recibe una posicion en el heap
     // POS: Devuelve el padre del objeto en esa posicion
     datoHeap padre(int posHijo)
@@ -192,4 +178,19 @@ public:
     {
         return this->arrayHeap[1].id;
     }
+
+    // PRE:
+    // POS: Retorna si esta Lleno el heap
+    bool estaLleno()
+    {
+        return tope >= espacio;
+    }
+
+    // PRE:
+    // POS: Retorna si esta vacio el heap
+    bool estaVacio()
+    {
+        return tope == 0;
+    }
+
 };

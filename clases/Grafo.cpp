@@ -16,6 +16,7 @@ private:
     V *infoVertices;
 
 public:
+    // Constructor
     Grafo(int cantV, bool esDirigido, bool esPonderado)
     {
         vertices = new Arista *[cantV + 1]();
@@ -25,6 +26,7 @@ public:
         infoVertices = new V[cantV + 1];
     }
 
+    // Destructor
     ~Grafo()
     {
         for (int i = 1; i <= cantidadV; ++i)
@@ -41,16 +43,22 @@ public:
         delete[] infoVertices;
     }
 
+    // PRE: recibe un indice
+    // POS: devuelve el nodo del grafo asociado a ese indice
     V getVertice(int i)
     {
         return infoVertices[i];
     }
 
+    // PRE: recibe un indice y una info
+    // POS: setea el nodo en el indice recibido y le asigna la informacion 
     void setVertice(int i, V info)
     {
         infoVertices[i] = info;
     }
 
+    // PRE: recibe un origen un destino y un peso (opcional)
+    // POS: agrega la arista con esa informacion a la lista de aristas del origen
     void agregarArista(int origen, int destino, int peso = 1)
     {
         Arista *nuevaArista = new Arista();
@@ -68,6 +76,8 @@ public:
         }
     }
 
+    // PRE: 
+    // POS: impirme el grafo
     void imprimir()
     {
         cout << endl
@@ -93,11 +103,15 @@ public:
         }
     }
 
+    // PRE: recibe un vertice
+    // POS: devuelve una lista con los adyacentes de ese veritce
     Arista *adyacentes(int vertice)
     {
         return vertices[vertice];
     }
 
+    // PRE: 
+    // POS: retorna la cantidad de vertices del grafo
     int cantidadVertices()
     {
         return cantidadV;

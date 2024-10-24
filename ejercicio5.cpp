@@ -55,16 +55,20 @@ int main()
     }
 
 /* ------------------------- Fin de lectura de datos ------------------------ */
-// Resolucion problema: 
+    // Resolucion problema: 
     ciudad *origen = c->getVertice(O);
     cout << "Ciudad inicial: " << origen->nombre << endl;
-
+    
+    // guardo cantidades
     int cantidadMisiones = m->cantidadVertices();
     int cantidadCiudades = c->cantidadVertices();
+
+    // calculo grado de entrada de las misiones
     int *inDegreeM = DegreeM(m);
 
     Cola *Cmisiones = new Cola();
-
+    
+    // encolo las misiones sin dependencias
     for (int i = 1; i < cantidadMisiones + 1; i++)
     {
         if (inDegreeM[i] == 0)
@@ -72,31 +76,37 @@ int main()
             Cmisiones->encolar(i); // encolo el id de la mision
         }
     }
+    
     int contMisiones = 0;
     int estoyEn = O;
-
     int costoTotalViaje = 0;
 
-    while (contMisiones != cantidadMisiones)
+    // mientras no haya procesado todas las misiones
+    while (contMisiones != cantidadMisiones) // O(M)
     {
-        int *costo = initCostos(c->cantidadVertices() + 1);
-        int *vengoDe = initVengoDe(c->cantidadVertices() + 1);
-        costo[estoyEn] = 0;
-        dijkstra(c, estoyEn, costo, vengoDe);
+        int *costo = initCostos(c->cantidadVertices() + 1);     // Inicializamos costos en maxInt
+        int *vengoDe = initVengoDe(c->cantidadVertices() + 1);  // Incializamos vengoDe en -1 (vengoDe luego nos ayuda a reconstruir el camino)
+        costo[estoyEn] = 0;                                     // El costo del origen a si mismo es de 0
+        dijkstra(c, estoyEn, costo, vengoDe);                   // O((C+E) * log C)Hacemos dijkstra para obtener el camino en vengoDe a cada vertice con el menor costo y ademas guardar el costo
 
-        int indice_mision1 = Cmisiones->desencolar(); // primera mision candidata a hacer
-        mision *primera = m->getVertice(indice_mision1);
-        int ciudadMenorCosto = primera->idCiudad;
+        int indice_mision1 = Cmisiones->desencolar();           // Agarramos una primera mision como referencia para hacer
+        mision *primera = m->getVertice(indice_mision1);        // Obtenemos sus datos
+        int ciudadMenorCosto = primera->idCiudad;               // La ciudad de menor costo asumimos que es la asociada a la primera mision (tambien como referencia)
 
-        int misionAsociada = primera->id;
-        int ultimoCosto = costo[ciudadMenorCosto];
+        int misionAsociada = primera->id;                       // Guardamos el id asociado a la mision
+        int ultimoCosto = costo[ciudadMenorCosto];              // Guardamos el costo a la ciudad de menor costo asociada a la mision
 
-        int ciudadesVisitadas = 1;
-        while (ciudadesVisitadas != cantidadCiudades && !Cmisiones->esVacia()) // O c
+        int ciudadesVisitadas = 1;                              // Ya visitamos una ciudad
+
+        // Busco en las misiones sin dependencias la que tenga la ciudad con menor costo de viaje
+        while (ciudadesVisitadas != cantidadCiudades && !Cmisiones->esVacia()) // O(C)
         {
+            // desencolo una mision 
             int indice_mision = Cmisiones->desencolar();
             mision *mision_candidata = m->getVertice(indice_mision);
             int indice_ciudad = mision_candidata->idCiudad;
+            
+            // Si la ciudad de la mision desencolada tiene menor costo que la anterior de menor costo actualizo los datos
             if (costo[indice_ciudad] < ultimoCosto)
             {
                 Cmisiones->encolar(misionAsociada);
@@ -110,28 +120,35 @@ int main()
             }
             ciudadesVisitadas++;
         }
-
+        
         primera = m->getVertice(misionAsociada); // esta es la mision que hay que hacer
         Arista *misionesConPrevia = m->adyacentes(misionAsociada);
+
+        // bajo el grado de inDegree de las misiones adyacentes a la que voy a hacer
         while (misionesConPrevia)
         {
             int destino = misionesConPrevia->destino;
             inDegreeM[destino]--;
+            
+            // si tienen grado 0 las encolo
             if (inDegreeM[destino] == 0)
                 Cmisiones->encolar(destino);
             misionesConPrevia = misionesConPrevia->sig;
         }
-        // tengo que recorrer todo el vengoDe para hacer el camino desde el origen hasta la ciudad;
+        
+        // tengo que recorrer todo el vengoDe para hacer el camino desde el origen hasta la ciudad de origen
         nodoLista *listaImprimir = NULL;
         int voyA = ciudadMenorCosto;
-
+        
+        // inserto en una lista la ciudades que recorro para realizar la mision esto es para imprimirlo en el orden correcto
         while (voyA != estoyEn)
         {
             insertarInicio(voyA, listaImprimir);
             voyA = vengoDe[voyA];
         }
-        insertarInicio(estoyEn, listaImprimir);
-
+        insertarInicio(estoyEn, listaImprimir); // inserto el origen
+        
+        // imprimo las ciudades
         while (listaImprimir)
         {
             int pos = eliminarInicioYdevolver(listaImprimir);
@@ -139,6 +156,8 @@ int main()
             string nombre_ciudad = ciu->nombre;
             cout << nombre_ciudad << " -> ";
         }
+
+        // imprimo la mision
         string nombre_mision = primera->nombre;
         ciudad *ciudadMC = c->getVertice(ciudadMenorCosto);
         cout << "Mision: " << nombre_mision << " - " << ciudadMC->nombre << " - Tiempo de viaje: " << ultimoCosto << endl;
@@ -148,8 +167,9 @@ int main()
         delete[] vengoDe;
         contMisiones++;
     }
-
+    
     cout << "Misiones ejecutadas con exito." << endl;
     cout << "Tiempo total de viaje: " << costoTotalViaje << endl;
     return 0;
+    
 }
