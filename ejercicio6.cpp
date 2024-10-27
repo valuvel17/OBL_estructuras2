@@ -1,4 +1,5 @@
-#include "funciones/funcionesE5.cpp"
+#include <string>
+#include "funciones/funcionesE5yE6.cpp"
 
 using namespace std;
 
@@ -6,7 +7,8 @@ int main()
 {
     int C;
     cin >> C;
-    Grafo<ciudad *> *c = new Grafo<ciudad *>(C, false, true); // no dirigido ponderado
+    Grafo<ciudad *> *c = new Grafo<ciudad *>(C, false, true); //  no dirigido y ponderado
+    Grafo<ciudad *> *c2 = new Grafo<ciudad *>(C, false, true); // no dirigido y ponderado
     for (int i = 0; i < C; i++)
     {
         int idCiudad;
@@ -16,6 +18,7 @@ int main()
         nueva->id = idCiudad;
         nueva->nombre = nombre_sin_espacios;
         c->setVertice(idCiudad, nueva);
+        c2->setVertice(idCiudad, nueva);
     }
     int S, E, T, P, cant_aristas;
     cin >> S >> E >> T >> P >> cant_aristas;
@@ -24,7 +27,10 @@ int main()
     for (int i = 0; i < cant_aristas; i++)
     {
         cin >> id_ciudad_origen >> id_ciudad_destino >> costo;
-        c->agregarArista(id_ciudad_origen, id_ciudad_destino, costo);
+        if(!existeArista(id_ciudad_origen, id_ciudad_destino, c)){ //preguntar que onda con los in uwu
+            c->agregarArista(id_ciudad_origen, id_ciudad_destino, costo);
+            c2->agregarArista(id_ciudad_origen, id_ciudad_destino, costo);
+        } 
     }
 
     /* ------------------------ Terminamos de leer datos ------------------------ */
@@ -36,25 +42,24 @@ int main()
     nodoLista *paso1T = NULL;
     nodoLista *paso2T = NULL;
     nodoLista *paso3T = NULL;
-    nodoLista *recorridoT = NULL;
     int costoE = calcularCosto(S, E, T, P, paso1E, paso2E, paso3E, c);
-    int costoT = calcularCosto(S, T, E, P, paso1T, paso2T, paso3T, c);
+    int costoT = calcularCosto(S, T, E, P, paso1T, paso2T, paso3T, c2);
 
     if (costoE <= costoT)
     {
         cout << "BE11, la mejor ruta es Desactivar la Entidad, buscar equipo y punto de extraccion con un costo de " << costoE << endl;
         cout << "La otra opcion tiene un costo de " << costoT << endl;
-        imprimirCamino(paso1E);
-        imprimirCamino(paso2E);
-        imprimirCamino(paso3E);
+        cout << "Paso 1: " << imprimirCamino(paso1E, c) << "Desactivar la Entidad" << endl;
+        cout << "Paso 2: " << imprimirCamino(paso2E, c) << "Buscar equipo" << endl;
+        cout << "Paso 3: " << imprimirCamino(paso3E, c) << "Ir a Punto de extraccion" << endl;
     }
     else
     {
-        cout << "BE11, la mejor ruta es Desactivar la Entidad, buscar equipo y punto de extraccion con un costo de " << costoT << endl;
+        cout << "BE11, la mejor ruta buscar equipo, Desactivar la Entidad y punto de extraccion con un costo de " << costoT << endl;
         cout << "La otra opcion tiene un costo de " << costoE << endl;
-        imprimirCamino(paso1T);
-        imprimirCamino(paso2T);
-        imprimirCamino(paso3T);
+        cout << "Paso 1: " << imprimirCamino(paso1T, c2) << "Buscar equipo" << endl;
+        cout << "Paso 2: " << imprimirCamino(paso2T, c2) << "Desactivar la Entidad" << endl;
+        cout << "Paso 3: " << imprimirCamino(paso3T, c2) << "Ir a Punto de extraccion"  << endl;
     }
 
     eliminarLista(paso1E);
@@ -73,89 +78,8 @@ int main()
     return 0;
 }
 
-void eliminarLista(nodoLista *&l)
-{
-    while (l)
-    {
-        eliminarInicioYdevolver(l);
-    }
-}
 
-int calcularCosto(int org, int dest, int dest2, int final, nodoLista *&p1, nodoLista *&p2, nodoLista *&p3, Grafo<ciudad *> *c)
-{
-    int ret, estoyEn, voyA, vineDe;
-    ret = 0;
-
-    /* --------------------------------- Paso 1 --------------------------------- */
-    estoyEn = org;
-    voyA = dest;
-
-    int *costos = initCostos(c->cantidadVertices() + 1);
-    int *vengoDe = initVengoDe(c->cantidadVertices() + 1);
-    costos[estoyEn] = 0;
-    vengoDe[estoyEn] = estoyEn;
-    dijkstra(c, estoyEn, costos, vengoDe);
-
-    ret = costos[voyA];
-
-    while (voyA != estoyEn)
-    {
-        insertarInicio(voyA, p1);
-        vineDe = vengoDe[voyA];
-        c->duplicarValorArista(vineDe, voyA);
-        voyA = vineDe;
-    }
-    insertarInicio(estoyEn, p1);
-
-    /* --------------------------------- Paso 2 --------------------------------- */
-    estoyEn = dest;
-    voyA = dest2;
-
-    int *vengoDe2 = initVengoDe(c->cantidadVertices() + 1);
-    int *costos2 = initCostos(c->cantidadVertices() + 1);
-    costos2[estoyEn] = 0;
-    vengoDe2[estoyEn] = estoyEn;
-
-    dijkstra(c, estoyEn, costos2, vengoDe2);
-
-    ret += costos2[voyA];
-
-    while (voyA != estoyEn)
-    {
-        insertarInicio(voyA, p2);
-        vineDe = vengoDe2[voyA];
-        c->duplicarValorArista(vineDe, voyA);
-        voyA = vineDe;
-    }
-    insertarInicio(estoyEn, p2);
-
-    delete[] vengoDe2;
-    delete[] costos2;
-
-    /* --------------------------------- Paso 3 --------------------------------- */
-    estoyEn = dest2;
-    voyA = final;
-
-    int *vengoDe3 = initVengoDe(c->cantidadVertices() + 1);
-    int *costos3 = initCostos(c->cantidadVertices() + 1);
-    costos3[estoyEn] = 0;
-    vengoDe3[estoyEn] = estoyEn;
-
-    dijkstra(c, estoyEn, costos3, vengoDe3);
-
-    ret += costos3[voyA];
-    while (voyA != estoyEn)
-    {
-        insertarInicio(voyA, p3);
-        vineDe = vengoDe3[voyA];
-        c->duplicarValorArista(vineDe, voyA);
-        voyA = vineDe;
-    }
-    insertarInicio(estoyEn, p3);
-
-    delete[] vengoDe3;
-    delete[] costos3;
-}
+// pseudocodigo
 
 // Dijstra para el origen
 // funcion calcular costo yendo por entidad VengoDe o lista que digga los que visito

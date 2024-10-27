@@ -51,7 +51,7 @@ public:
     }
 
     // PRE: recibe un indice y una info
-    // POS: setea el nodo en el indice recibido y le asigna la informacion 
+    // POS: setea el nodo en el indice recibido y le asigna la informacion
     void setVertice(int i, V info)
     {
         infoVertices[i] = info;
@@ -76,7 +76,7 @@ public:
         }
     }
 
-    // PRE: 
+    // PRE:
     // POS: impirme el grafo
     void imprimir()
     {
@@ -110,34 +110,40 @@ public:
         return vertices[vertice];
     }
 
-    // PRE: 
+    // PRE:
     // POS: retorna la cantidad de vertices del grafo
     int cantidadVertices()
     {
         return cantidadV;
     }
 
-
     // Funcion especifica para el ejericio 6
     // PRE: recibe un origen y un destino pertenecientes a una arista
     // POS: duplica el peso de esa arista
-    duplicarValorArista(int org, int dest){
-        Arista* aux = vertices[org];
-        while (aux){
-            if(aux->destino = dest){
-                aux->peso = (aux->peso)*2;
+    void duplicarValorArista(int org, int dest)
+    {
+        Arista *aux = vertices[org];
+        while (aux)
+        {
+            if (aux->destino == dest)
+            {
+                aux->peso = (aux->peso) * 2;
             }
             aux = aux->sig;
         }
-        if(!dirigido){
-            Arista* aux = vertices[dest];
-            while (aux){
-                if(aux->destino = org){
-                  aux->peso = (aux->peso)*2;
+
+        // no se si esto va por que no entiendo los casos
+        if (!dirigido)
+        {
+            Arista *aux = vertices[dest];
+            while (aux)
+            {
+                if (aux->destino == org)
+                {
+                    aux->peso = (aux->peso) * 2;
                 }
-            aux = aux->sig;
+                aux = aux->sig;
             }
         }
-        
     }
 };

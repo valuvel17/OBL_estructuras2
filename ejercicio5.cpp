@@ -2,7 +2,7 @@
 #include <string>
 #include <iostream>
 #include <limits>
-#include "funciones/funcionesE5.cpp"
+#include "funciones/funcionesE5yE6.cpp"
 
 int main()
 {
