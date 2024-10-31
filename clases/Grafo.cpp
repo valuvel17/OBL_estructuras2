@@ -57,10 +57,21 @@ public:
         infoVertices[i] = info;
     }
 
+    bool existeArista(int origen, int destino){
+        Arista* ady = vertices[origen];
+        while(ady){
+            if(ady->destino == destino) return true;
+            ady = ady->sig;
+        }
+        return false;
+    }
+
     // PRE: recibe un origen un destino y un peso (opcional)
     // POS: agrega la arista con esa informacion a la lista de aristas del origen
     void agregarArista(int origen, int destino, int peso = 1)
     {
+        if (existeArista(origen, destino)) return;
+        
         Arista *nuevaArista = new Arista();
         nuevaArista->destino = destino;
         nuevaArista->peso = peso;

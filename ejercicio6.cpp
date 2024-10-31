@@ -27,10 +27,10 @@ int main()
     for (int i = 0; i < cant_aristas; i++)
     {
         cin >> id_ciudad_origen >> id_ciudad_destino >> costo;
-        if(!existeArista(id_ciudad_origen, id_ciudad_destino, c)){ //preguntar que onda con los in uwu
+        // if(!existeArista(id_ciudad_origen, id_ciudad_destino, c)){ //preguntar que onda con los in uwu
             c->agregarArista(id_ciudad_origen, id_ciudad_destino, costo);
             c2->agregarArista(id_ciudad_origen, id_ciudad_destino, costo);
-        } 
+        // } 
     }
 
     /* ------------------------ Terminamos de leer datos ------------------------ */
