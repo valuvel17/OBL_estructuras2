@@ -136,13 +136,12 @@ public:
         Arista *aux = vertices[org];
         while (aux)
         {
-            if (aux->destino == dest)
+            if (aux->destino == dest && flag)
             {
                 aux->peso = (aux->peso) * 2;
             }
             aux = aux->sig;
-        }
-
+        } 
         // no se si esto va por que no entiendo los casos
         if (!dirigido)
         {
@@ -151,7 +150,7 @@ public:
             {
                 if (aux->destino == org)
                 {
-                    aux->peso = (aux->peso) * 2;
+                    aux->peso = (aux->peso) * 2;   
                 }
                 aux = aux->sig;
             }
