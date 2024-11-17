@@ -55,7 +55,7 @@ int main()
     }
     else
     {
-        cout << "BE11, la mejor ruta buscar equipo, Desactivar la Entidad y punto de extraccion con un costo de " << costoT << endl;
+        cout << "BE11, la mejor ruta es buscar equipo, Desactivar la Entidad y punto de extraccion con un costo de " << costoT << endl;
         cout << "La otra opcion tiene un costo de " << costoE << endl;
         cout << "Paso 1: " << imprimirCamino(paso1T, c2) << "Buscar equipo" << endl;
         cout << "Paso 2: " << imprimirCamino(paso2T, c2) << "Desactivar la Entidad" << endl;

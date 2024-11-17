@@ -136,7 +136,7 @@ public:
         Arista *aux = vertices[org];
         while (aux)
         {
-            if (aux->destino == dest && flag)
+            if (aux->destino == dest)
             {
                 aux->peso = (aux->peso) * 2;
             }

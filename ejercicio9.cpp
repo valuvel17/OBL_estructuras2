@@ -54,6 +54,7 @@ bool elObjetoEntra(int costo, int volumen, int capacidadPresupuestoActual, int c
     return costo <= capacidadPresupuestoActual && volumen <= capacidadExtranjerosActual;
 }
 
+// 
 Lista reconstruirJugadoresEnLista(int &cantidadMejoresJugadores, int cantJugadores, int Presupuesto, int CantExtranjeros, int ***mochila1, jugador **players)
 {
     Lista ret = NULL;
@@ -225,7 +226,7 @@ int main()
              << ", Valoración: " << players[temp->indice]->valoracion << endl;
         temp = temp->sig;
     }
-////////////////////////////////////////
+    ////////////////////////////////////////
     jugador **mejoresJugadoresDeTodos = reconstruirIndices(mejoresJugadoresDeTodos_enLista, cantidadMejoresJugadores, players);
 
     // Crear mochila2 para optimizar el plantel
@@ -256,6 +257,7 @@ int main()
             }
         }
     }
+
     imprimirMochila2(mochila2, cantidadMejoresJugadores, 11);
 
     // Debug: Imprimir resultado final de mochila2
