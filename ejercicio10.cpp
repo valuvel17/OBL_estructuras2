@@ -100,17 +100,25 @@ void sacarPlanta(int &cantidadActual, string **jardin_actual, int fila_actual, i
     cantidadActual--;
 }
 
+bool puedeSerMejorSolucion(int cantidadActual, int mayorCantidad, int fila_actual, int col_actual, int N)
+{
+    int totalCeldas = N * N;
+    int celdasRevisadas = (fila_actual * N) + (col_actual + 1) - 1;
+    int cantPosicionesNoVisitadas = totalCeldas - celdasRevisadas;
+    return (cantidadActual + cantPosicionesNoVisitadas) > mayorCantidad;
+}
+
 void backtracking(int cantidadActual, string **jardin_actual, int fila_actual, int col_actual, int &mayorCantidad, string **mejor_jardin, flor **flores, int F, int N)
 {
+    if (!puedeSerMejorSolucion(cantidadActual, mayorCantidad, fila_actual, col_actual, N))
+    {
+        return;
+    }
 
     if (esSolucion() && esMejorSolucion(cantidadActual, mayorCantidad))
     {
         mayorCantidad = cantidadActual;
         copiarSolucion(jardin_actual, mejor_jardin, N);
-    }
-
-    if (fila_actual == N){ // reccorrimos toda la matriz
-        return;
     }
 
     for (int i = 0; i < F; i++) // Iterar sobre las flores disponibles
@@ -123,23 +131,38 @@ void backtracking(int cantidadActual, string **jardin_actual, int fila_actual, i
             {
                 backtracking(cantidadActual, jardin_actual, fila_actual, col_actual + 1, mayorCantidad, mejor_jardin, flores, F, N);
             }
-            else // Avanzar a la siguiente fila
+            else if (hayEspacioAbajo(fila_actual, N)) // Avanzar a la siguiente fila
             {
                 backtracking(cantidadActual, jardin_actual, fila_actual + 1, 0, mayorCantidad, mejor_jardin, flores, F, N);
             }
 
+            else
+            {
+                if (esSolucion() && esMejorSolucion(cantidadActual, mayorCantidad))
+                {
+                    mayorCantidad = cantidadActual;
+                    copiarSolucion(jardin_actual, mejor_jardin, N);
+                }
+            }
             sacarPlanta(cantidadActual, jardin_actual, fila_actual, col_actual); // Deshacer la decisión
         }
     }
-
     // Caso en el que no se coloca ninguna planta en esta celda
     if (hayEspacioAlaDerecha(col_actual, N))
     {
         backtracking(cantidadActual, jardin_actual, fila_actual, col_actual + 1, mayorCantidad, mejor_jardin, flores, F, N);
     }
-    else
+    else if (hayEspacioAbajo(fila_actual, N))
     {
         backtracking(cantidadActual, jardin_actual, fila_actual + 1, 0, mayorCantidad, mejor_jardin, flores, F, N);
+    }
+    else
+    {
+        if (esSolucion() && esMejorSolucion(cantidadActual, mayorCantidad))
+        {
+            mayorCantidad = cantidadActual;
+            copiarSolucion(jardin_actual, mejor_jardin, N);
+        }
     }
 }
 // VERSION QUE DA MAL 3 Y NO CORRE 5 Y 6
