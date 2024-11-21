@@ -187,7 +187,6 @@ int main()
         int peso = 1;                                             // El peso de cada jugador (unidades de presupuesto)
         int costo = players[jugadorActual]->salario;              // Costo del jugador
         int volumen = players[jugadorActual]->extranjero ? 1 : 0; // Volumen (1 si es extranjero)
-
         // Debug: Verifica si el jugador se puede agregar al presupuesto y extranjeros disponibles
         cout << "Jugador " << jugadorActual << ": Costo = " << costo << ", Extranjeros = " << volumen << endl;
 
@@ -195,6 +194,7 @@ int main()
         {
             for (int capacidadExtranjerosActual = 0; capacidadExtranjerosActual <= CantExtranjeros; capacidadExtranjerosActual++)
             {
+                //for 1 a 11
                 // Verificar si el jugador cabe dentro de los límites de presupuesto y extranjeros
                 if (!elObjetoEntra(costo, volumen, capacidadPresupuestoActual, capacidadExtranjerosActual))
                 {
@@ -202,19 +202,21 @@ int main()
                 }
                 else
                 {
-                    int valorUsarJugador = players[jugadorActual]->valoracion + mochila1[jugadorActual - 1][capacidadPresupuestoActual - costo][capacidadExtranjerosActual - volumen];
+                    int valorUsarJugador = players[jugadorActual]->valoracion + mochila1[jugadorActual - 1][capacidadPresupuestoActual - costo][capacidadExtranjerosActual - volumen];//[4tadim]
                     int valorNoUsarJugador = mochila1[jugadorActual - 1][capacidadPresupuestoActual][capacidadExtranjerosActual];
                     mochila1[jugadorActual][capacidadPresupuestoActual][capacidadExtranjerosActual] = max(valorUsarJugador, valorNoUsarJugador);
                 }
+                //endFor
             }
         }
     }
 
+//retorar /11
     // Debug: Verificar los valores de mochila1 después de la llenada
     cout << "Mochila1 llena correctamente." << endl;
     cout << mochila1[cantJugadores][Presupuesto][CantExtranjeros] << endl;
 
-    int cantidadMejoresJugadores = 0;
+    /* int cantidadMejoresJugadores = 0;
     Lista mejoresJugadoresDeTodos_enLista = reconstruirJugadoresEnLista(cantidadMejoresJugadores, cantJugadores, Presupuesto, CantExtranjeros, mochila1, players);
     /////////////////////////////////////////////////
     cout << "Reconstruyendo lista de mejores jugadores..." << endl;
@@ -265,10 +267,10 @@ int main()
 
     // Resultado final: Promedio del valor de los jugadores seleccionados
     cout << mochila2[cantidadMejoresJugadores][11] / 11 << endl;
-
+ */
     // Liberar memoria de las estructuras usadas
     liberarMochila1(mochila1, cantJugadores, Presupuesto);
-    liberarMochila2(mochila2, cantidadMejoresJugadores);
+    //liberarMochila2(mochila2, cantidadMejoresJugadores);
 
     // Liberar memoria de los jugadores
     for (int i = 1; i <= cantJugadores; i++)
