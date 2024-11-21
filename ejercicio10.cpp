@@ -4,27 +4,37 @@
 #include <string>
 
 using namespace std;
+
+// struct para flor
 struct flor
 {
     string color;
     int posValida;
 };
 
+//PRE: - 
+//POS: Si la cantidad actual es mayor a la mayor cantidad anterior entonces es una mejor solucion
 bool esMejorSolucion(int cantidadActual, int mayorCantidad)
 {
     return cantidadActual > mayorCantidad;
 }
 
+//PRE: - 
+//POS: cualquier caso puede ser solucion
 bool esSolucion()
 {
     return true;
 }
 
+//PRE: recibe posicion en el vector de la floractual y la cantidad de flores (largo del vector)
+//POS: retorna si es una posicion valida
 bool esObjetoValido(int florActual, int F)
 {
     return florActual >= 0 && florActual < F;
 }
 
+//PRE: -
+//POS: copia la solucion actual en la mejor solucion de jardin
 void copiarSolucion(string **jardin_actual, string **mejor_jardin, int N)
 {
     for (int i = 0; i < N; i++)
@@ -36,6 +46,8 @@ void copiarSolucion(string **jardin_actual, string **mejor_jardin, int N)
     }
 }
 
+//PRE: fila>= y col >=0
+//POS: Devuelve true si existe algun adyacente del mismo color
 bool adyacentesMismoColor(int florActual, flor **flores, string **jardin_actual, int fil, int col, int N)
 {
     string color = flores[florActual]->color;
@@ -61,6 +73,8 @@ bool adyacentesMismoColor(int florActual, flor **flores, string **jardin_actual,
     return false;
 }
 
+//PRE: -
+//POS: retorna true si la flor cumple con la condicion de posicion valida en la fila actual
 bool estoyEnFilaValida(int florActual, flor **flores, int fila_actual)
 {
     if (flores[florActual]->posValida == fila_actual || flores[florActual]->posValida == -1)
@@ -70,6 +84,8 @@ bool estoyEnFilaValida(int florActual, flor **flores, int fila_actual)
     return false;
 }
 
+//PRE: -
+//POS: retorna true si se puede colocar la flor en la posicion enviada es decir no interfiere con ninguna restriccion (posValida y colores adyacentes)
 bool puedoPonerPlanta(int florActual, flor **flores, int fila_actual, int col_actual, string **jardin_actual, int N)
 {
     if (!adyacentesMismoColor(florActual, flores, jardin_actual, fila_actual, col_actual, N) && estoyEnFilaValida(florActual, flores, fila_actual))
@@ -77,6 +93,8 @@ bool puedoPonerPlanta(int florActual, flor **flores, int fila_actual, int col_ac
     return false;
 }
 
+//PRE: -
+//POS: actualiza el color del jardin actual en la fila y posicion, y aumenta la cantidad de flores usadas
 void usarPlanta(int &florActual, flor **flores, int fila_actual, int col_actual, string **jardin_actual, int &cantidadActual)
 {
     string color = flores[florActual]->color;
@@ -84,26 +102,34 @@ void usarPlanta(int &florActual, flor **flores, int fila_actual, int col_actual,
     cantidadActual++;
 }
 
+//PRE: -
+//POS: si la columna es menor al tamano horizontal - 1 entonces hay al menos 1 espacio a la derecha
 bool hayEspacioAlaDerecha(int col_actual, int N)
 {
     return col_actual < N - 1;
 }
 
+//PRE: -
+//POS: retorna true si hay una fila debajo en la matriz
 bool hayEspacioAbajo(int fila_actual, int N)
 {
     return fila_actual < N - 1;
 }
 
+//PRE: -
+//POS: modifica el jardin enviado quitando la planta en la posicion indicada
 void sacarPlanta(int &cantidadActual, string **jardin_actual, int fila_actual, int col_actual)
 {
     jardin_actual[fila_actual][col_actual] = "";
     cantidadActual--;
 }
 
+//PRE: -
+//POS: retorna true si en la situacion actual del jardin, puede ser una mejor solucion
 bool puedeSerMejorSolucion(int cantidadActual, int mayorCantidad, int fila_actual, int col_actual, int N)
 {
     int totalCeldas = N * N;
-    int celdasRevisadas = (fila_actual * N) + (col_actual + 1) - 1;
+    int celdasRevisadas = (fila_actual * N) + (col_actual + 1) - 1; // todas las que ya revise menos la que voy a revisar
     int cantPosicionesNoVisitadas = totalCeldas - celdasRevisadas;
     return (cantidadActual + cantPosicionesNoVisitadas) > mayorCantidad;
 }
@@ -136,7 +162,7 @@ void backtracking(int cantidadActual, string **jardin_actual, int fila_actual, i
                 backtracking(cantidadActual, jardin_actual, fila_actual + 1, 0, mayorCantidad, mejor_jardin, flores, F, N);
             }
 
-            else
+            else //en el ultimo caso no hay checkeo porque no entra a backtracking asi que lo hacemos aca
             {
                 if (esSolucion() && esMejorSolucion(cantidadActual, mayorCantidad))
                 {
@@ -147,7 +173,7 @@ void backtracking(int cantidadActual, string **jardin_actual, int fila_actual, i
             sacarPlanta(cantidadActual, jardin_actual, fila_actual, col_actual); // Deshacer la decisión
         }
     }
-    // Caso en el que no se coloca ninguna planta en esta celda
+    // Caso en el que no se coloca *ninguna* planta en esta celda
     if (hayEspacioAlaDerecha(col_actual, N))
     {
         backtracking(cantidadActual, jardin_actual, fila_actual, col_actual + 1, mayorCantidad, mejor_jardin, flores, F, N);
@@ -165,50 +191,6 @@ void backtracking(int cantidadActual, string **jardin_actual, int fila_actual, i
         }
     }
 }
-// VERSION QUE DA MAL 3 Y NO CORRE 5 Y 6
-/*void backtracking(int cantidadActual, string **jardin_actual, int florActual, int fila_actual, int col_actual, int &mayorCantidad, string **mejor_jardin, flor **flores, int F, int N)
-{
-    if (esSolucion() && esMejorSolucion(cantidadActual, mayorCantidad))
-    {
-        mayorCantidad = cantidadActual;
-        copiarSolucion(jardin_actual, mejor_jardin, N);
-    }
-    for (int i = 0; i < N*2 ; i++)
-    { //  ejemplo si son 6 flores son 12 opciones, entonces hacemos for 12. la flor va a ser 12/2 y la opcion va a ser 12%2 (0 o 1)
-        int florActual = i/2;
-        bool pongoF = i%2 == 0;
-        if (esObjetoValido(florActual, F))
-        {
-            if (pongoF)
-            {
-                if (puedoPonerPlanta(florActual, flores, fila_actual, col_actual, jardin_actual, N))
-                {
-                    usarPlanta(florActual, flores, fila_actual, col_actual, jardin_actual, cantidadActual);
-                    if (hayEspacioAlaDerecha(col_actual, N))
-                    { // avanzo a la der
-                        backtracking(cantidadActual, jardin_actual, florActual, fila_actual, col_actual + 1, mayorCantidad, mejor_jardin, flores, F, N);
-                    }
-                    else if (hayEspacioAbajo(fila_actual, N)) // fila+1 , col 0
-                    {
-                        backtracking(cantidadActual, jardin_actual, florActual, fila_actual + 1, 0, mayorCantidad, mejor_jardin, flores, F, N);
-                    }
-                    sacarPlanta(cantidadActual, jardin_actual, fila_actual, col_actual);
-                }
-            }
-            else
-            {
-                if (hayEspacioAlaDerecha(col_actual, N))
-                { // avanzo a la der
-                    backtracking(cantidadActual, jardin_actual, florActual, fila_actual, col_actual + 1, mayorCantidad, mejor_jardin, flores, F, N);
-                }
-                else if (hayEspacioAbajo(fila_actual, N)) // fila =0 , col +1 (bajo)
-                {
-                    backtracking(cantidadActual, jardin_actual, florActual, fila_actual + 1, 0, mayorCantidad, mejor_jardin, flores, F, N);
-                }
-            }
-        }
-    }
-}*/
 
 int main()
 {
@@ -249,6 +231,7 @@ int main()
     backtracking(cantidadActual, jardin_actual, fila_actual, col_actual, mayorCantidad, mejor_jardin, flores, F, N);
     cout << mayorCantidad;
 
+    // liberamos memoria
     for (int i = 0; i < N; i++)
     {
         delete[] jardin_actual[i];
