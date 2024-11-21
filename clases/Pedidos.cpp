@@ -97,7 +97,7 @@ private:
         aBorrar = NULL;
     }
 
-    // PRE: recibe una lista
+    // PRE: recibe una lista y un id
     // POS: elimina el nodo que contenga esa id en la lista
     void eliminar(Lista &l, int id)
     {
