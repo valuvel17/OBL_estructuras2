@@ -19,6 +19,9 @@ struct jugador
     bool extranjero;
 };
 
+
+//PRE: recibe los atributos de un jugador
+//POS: calcula la valoracion correspondiente
 int calcularValoracion(int ritmo, int tiro, int pase, int regate, int defensa, int fisico, string formaFisica, string confianza)
 {
     int val = ritmo + tiro + pase + regate + defensa + fisico;
@@ -51,24 +54,15 @@ int calcularValoracion(int ritmo, int tiro, int pase, int regate, int defensa, i
     return val;
 }
 
+//PRE: -
+//POS: Devvuelve si es posible agregar el objeto a la mochila
 bool elObjetoEntra(int costo, int volumen, int capacidadPresupuestoActual, int capacidadExtranjerosActual)
 {
     return costo <= capacidadPresupuestoActual && volumen <= capacidadExtranjerosActual;
 }
 
-jugador **reconstruirIndices(Lista nodos, int cantidadMejoresJugadores, jugador **players)
-{
-    jugador **ret = new jugador *[cantidadMejoresJugadores + 1];
-    for (int i = 1; i <= cantidadMejoresJugadores; i++)
-    {
-        ret[i] = players[nodos->indice];
-        Lista aux = nodos;
-        nodos = nodos->sig;
-        delete aux;
-    }
-    return ret;
-}
-
+//PRE: recibe la mochila, la cantidad 
+//POS: calcula la valoracion correspondiente
 void liberarMochila1(int ****mochila1, int cantJugadores, int Presupuesto)
 {
     for (int i = 0; i <= cantJugadores; i++)
@@ -130,14 +124,13 @@ int main()
         }
     }
 
-    // Llenado de mochila1 (parte del algoritmo de mochila)
+    // Llenado de mochila
     for (int jugadorActual = 1; jugadorActual <= cantJugadores; jugadorActual++)
     {
         int peso = 1;                                             // El peso de cada jugador (unidades de presupuesto)
         int costo = players[jugadorActual]->salario;              // Costo del jugador
         int volumen = players[jugadorActual]->extranjero ? 1 : 0; // Volumen (1 si es extranjero)
-        // Debug: Verifica si el jugador se puede agregar al presupuesto y extranjeros disponibles
-        //cout << "Jugador " << jugadorActual << ": Costo = " << costo << ", Extranjeros = " << volumen << endl;
+    
 
         for (int capacidadPresupuestoActual = 0; capacidadPresupuestoActual <= Presupuesto; capacidadPresupuestoActual++)
         {
@@ -146,9 +139,8 @@ int main()
                 for (int i = 1; i <= 11; i++)
                 {
                     // Verificar si el jugador cabe dentro de los límites de presupuesto y extranjeros
-                    if (!elObjetoEntra(costo, volumen, capacidadPresupuestoActual, capacidadExtranjerosActual))
-                    {
-                        mochila1[jugadorActual][capacidadPresupuestoActual][capacidadExtranjerosActual][i] = mochila1[jugadorActual - 1][capacidadPresupuestoActual][capacidadExtranjerosActual][i-1];
+                    if (!elObjetoEntra(costo, volumen, capacidadPresupuestoActual, capacidadExtranjerosActual)){
+                        mochila1[jugadorActual][capacidadPresupuestoActual][capacidadExtranjerosActual][i] = mochila1[jugadorActual - 1][capacidadPresupuestoActual][capacidadExtranjerosActual][i];
                     }
                     else
                     {
@@ -161,14 +153,12 @@ int main()
         }
     }
 
-    // retorar /11
-    //  Debug: Verificar los valores de mochila1 después de la llenada
+    //out
     cout << (mochila1[cantJugadores][Presupuesto][CantExtranjeros][11])/11 << endl;
 
     
     // Liberar memoria de las estructuras usadas
     liberarMochila1(mochila1, cantJugadores, Presupuesto);
-    // liberarMochila2(mochila2, cantidadMejoresJugadores);
 
     // Liberar memoria de los jugadores
     for (int i = 1; i <= cantJugadores; i++)
