@@ -316,6 +316,9 @@ public:
             if (aux->id == id)
             {
                 minHeap[aux->posEnHeap]->paraLlevar = !minHeap[aux->posEnHeap]->paraLlevar;
+                int nuevaPos = flotar(aux->posEnHeap);
+                hundir(nuevaPos);
+                break;
             }
             aux = aux->sig;
         }
